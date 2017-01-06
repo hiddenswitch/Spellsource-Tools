@@ -1,12 +1,28 @@
 <template name="cardEditor">
-    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <div id="blocklyArea"></div>
+    <div id="blocklyDiv"></div>
     <xml id="toolbox" style="display: none">
-        <block type="controls_if"></block>
-        <block type="controls_repeat_ext"></block>
-        <block type="logic_compare"></block>
-        <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="text"></block>
-        <block type="text_print"></block>
+        <category name="Card Types">
+            <block type="minion"></block>
+            <block type="weapon"></block>
+            <block type="page_header"></block>
+            <block type="page_text"></block>
+        </category>
+        <category name="Attributes">
+            <block type="color_red"></block>
+            <block type="color_green"></block>
+            <block type="color_blue"></block>
+            <block type="color_black"></block>
+            <block type="color_white"></block>
+            <block type="damagespelldesc"></block>
+            <block type="battlecrydesc"></block>
+
+
+
+        </category>
+        <category name="Test Custom Block">
+            <block type="string_length"></block>
+
+        </category>
     </xml>
 </template>

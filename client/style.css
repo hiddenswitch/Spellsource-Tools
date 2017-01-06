@@ -1,0 +1,46 @@
+body
+{
+    font-family:Arial, sans-serif;
+    font-size: 16pt;
+    background: #999;
+}
+p
+{
+    line-height:24pt;
+    color:#FFF;
+}
+#header
+{
+    color:#000;
+}
+#blockly
+{
+    border:1px solid #CCC;
+    padding-left:0;
+    height:700px;
+}
+#blockly_editor
+{
+    width:90%;
+    float:left;
+}
+#description
+{
+    width:20%;
+    float:right;
+    margin-top:0;
+}
+#button_run
+{
+    margin-left:2%;
+}
+#blocklyDiv
+{
+    position: absolute;
+}
+#blocklyArea {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
