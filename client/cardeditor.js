@@ -8,7 +8,7 @@ Template.cardEditor.onRendered(function () {
     // See the Blaze API to understand how templates work.
     var blocklyArea = document.getElementById('blocklyArea');
     var blocklyDiv = document.getElementById('blocklyDiv');
-    workspace = Blockly.inject(blocklyDiv,
+    var workspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
     var onresize = function (e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
@@ -36,24 +36,29 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
 
-    xml = Blockly.Xml.workspaceToDom(workspace);
+    var xml = Blockly.Xml.workspaceToDom(workspace);
     xml_text = Blockly.Xml.domToPrettyText(xml);
-    jsonText = JSON.stringify(xmlToJson(xml));
+    var jsonText = JSON.stringify(xmlToJson(xml));
     console.log(xml);
     console.log(xml_text);
     console.log(jsonText);
 
-    console.log(getJSON());
-
-
 });
 
 Template.cardEditorNavbar.events({
-    'click #navbar-button-1': function() {
+    'click #navbar-button-1': function () {
         alert('button clicked.');
     },
-    'click #navbar-link-1': function() {
+    'click #navbar-link-1': function () {
         alert('link clicked');
+    },
+    'click #get-JSON-button': function (workspace) {
+        var xml = Blockly.Xml.workspaceToDom(workspace);
+        xml_text = Blockly.Xml.domToPrettyText(xml);
+        jsonText = JSON.stringify(xmlToJson(xml));
+        console.log(xml);
+        console.log(xml_text);
+        console.log(jsonText);
     }
 });
 
@@ -62,31 +67,53 @@ Meteor.startup(function () {
 
 });
 
-Blockly.JSON = new Blockly.Generator('JSON');
+/*Blockly.JSON = new Blockly.Generator('JSON');
 
+ Blockly.JSON.fromWorkspace = function(workspace) {
 
-Blockly.JSON.fromWorkspace = function(workspace) {
+ var json_text = '';
 
-    var json_text = '';
+ var top_blocks = workspace.getTopBlocks(false);
+ for(var i in top_blocks) {
+ var top_block = top_blocks[i];
 
-    var top_blocks = workspace.getTopBlocks(false);
-    for(var i in top_blocks) {
-        var top_block = top_blocks[i];
+ if(top_block.type == 'start') {
+ var json_structure = this.generalBlockToObj( top_block );
 
-        if(top_block.type == 'start') {
-            var json_structure = this.generalBlockToObj( top_block );
+ json_text += JSON.stringify(json_structure, null, 4) + '\n\n';
+ }
+ }
+ //console.log(json_text);
+ return json_text;
+ };
 
-            json_text += JSON.stringify(json_structure, null, 4) + '\n\n';
-        }
-    }
-    console.log(json_text);
-    return json_text;
-};
+ Blockly.JSON['start'] = function(block) {
 
-function getJSON()
-{
-    Blockly.JSON.fromWorkspace(workspace);
-}
+ var json    = this.generalBlockToObj( block.getInputTargetBlock( 'json' ) );
+
+ return json;
+ };
+
+ Blockly.JSON.generalBlockToObj = function(block) {
+
+ if(block) {
+
+ // dispatcher:
+ var func = this[block.type];
+ if(func) {
+ return func.call(this, block);
+ } else {
+ console.log("Don't know how to generate JSON code for a '"+block.type+"'");
+ }
+ } else {
+ return null;
+ }
+ };
+
+ function getJSON()
+ {
+ Blockly.JSON.fromWorkspace(workspace);
+ }*/
 
 // Changes XML to JSON
 function xmlToJson(xml) {
@@ -109,7 +136,7 @@ function xmlToJson(xml) {
 
     // do children
     if (xml.hasChildNodes()) {
-        for(var i = 0; i < xml.childNodes.length; i++) {
+        for (var i = 0; i < xml.childNodes.length; i++) {
             var item = xml.childNodes.item(i);
             var nodeName = item.nodeName;
             if (typeof(obj[nodeName]) == "undefined") {
@@ -127,42 +154,35 @@ function xmlToJson(xml) {
     return obj;
 };
 
-updateWorkspace = function()
-{
-    xml = Blockly.Xml.workspaceToDom(workspace);
-    jsonText = JSON.stringify(xmlToJson(xml));
-    console.log(jsonText);
-}
-
 /*
-{"BLOCK":
-    {"@attributes":
-        {"type":"carddesc",
-            "id":"sbuFQ)e]#Mw1J4:Iy~kD",
-            "deletable":"false",
-            "x":"0",
-            "y":"0"},
-        "FIELD":[{"@attributes":
-        {"name":"id"},
-        "#text":"id"},
-        {"@attributes":
-            {"name":"name"},
-            "#text":"name"},
-        {"@attributes":
-            {"name":"description"},
-            "#text":"description"},
-        {"@attributes":
-            {"name":"HeroClass"},
-            "#text":"ANY"},
-        {"@attributes":
-            {"name":"Rarity"},
-            "#text":"FREE"},
-        {"@attributes":
-            {"name":"baseManaCost"},
-            "#text":"0"},
-        {"@attributes":
-            {"name":"collectible"},
-            "#text":"TRUE"}]}}
-*/
+ {"BLOCK":
+ {"@attributes":
+ {"type":"carddesc",
+ "id":"sbuFQ)e]#Mw1J4:Iy~kD",
+ "deletable":"false",
+ "x":"0",
+ "y":"0"},
+ "FIELD":[{"@attributes":
+ {"name":"id"},
+ "#text":"id"},
+ {"@attributes":
+ {"name":"name"},
+ "#text":"name"},
+ {"@attributes":
+ {"name":"description"},
+ "#text":"description"},
+ {"@attributes":
+ {"name":"HeroClass"},
+ "#text":"ANY"},
+ {"@attributes":
+ {"name":"Rarity"},
+ "#text":"FREE"},
+ {"@attributes":
+ {"name":"baseManaCost"},
+ "#text":"0"},
+ {"@attributes":
+ {"name":"collectible"},
+ "#text":"TRUE"}]}}
+ */
 
 
