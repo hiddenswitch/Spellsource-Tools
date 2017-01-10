@@ -30,7 +30,7 @@ Template.cardEditor.onRendered(function () {
     onresize();
     Blockly.svgResize(workspace);
 
-    var rootBlock = Blockly.Block.obtain(Blockly.mainWorkspace, 'carddesc');
+    var rootBlock = workspace.newBlock('carddesc');
     rootBlock.initSvg();
     rootBlock.render();
     rootBlock.setMovable(true);
