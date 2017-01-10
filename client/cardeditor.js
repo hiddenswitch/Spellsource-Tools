@@ -3,12 +3,18 @@ import {Template} from 'meteor/templating';
 
 // TODO: Look at https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gj4w2c for inspiration for blocks
 
+var workspace = null;
+
 Template.cardEditor.onRendered(function () {
+    if (workspace !== null) {
+        throw new Meteor.Error('There can only be 1 Blockly workspace at a time.');
+    }
+
     // This gets executed when injection DOM (blocklyDiv element) is ready.
     // See the Blaze API to understand how templates work.
     var blocklyArea = document.getElementById('blocklyArea');
     var blocklyDiv = document.getElementById('blocklyDiv');
-    var workspace = Blockly.inject(blocklyDiv,
+    workspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
     var onresize = function (e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
@@ -35,89 +41,36 @@ Template.cardEditor.onRendered(function () {
     rootBlock.render();
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
+});
 
-    var xml = Blockly.Xml.workspaceToDom(workspace);
-    xml_text = Blockly.Xml.domToPrettyText(xml);
-    var jsonText = JSON.stringify(xmlToJson(xml));
-    console.log(xml);
-    console.log(xml_text);
-    console.log(jsonText);
-
+Template.cardEditor.onDestroyed(function () {
+    if (workspace != null) {
+        workspace.dispose();
+        workspace = null;
+    }
 });
 
 Template.cardEditorNavbar.events({
     'click #navbar-button-1': function () {
-        alert('button clicked.');
+        var xml = Blockly.Xml.workspaceToDom(workspace);
+        var xmlText = Blockly.Xml.domToPrettyText(xml);
+        var jsonText = JSON.stringify(xmlToJson(xml));
+
+        console.log(xml);
+        console.log(xmlText);
+        console.log(jsonText);
     },
     'click #navbar-link-1': function () {
         alert('link clicked');
-    },
-    'click #get-JSON-button': function (workspace) {
-        var xml = Blockly.Xml.workspaceToDom(workspace);
-        xml_text = Blockly.Xml.domToPrettyText(xml);
-        jsonText = JSON.stringify(xmlToJson(xml));
-        console.log(xml);
-        console.log(xml_text);
-        console.log(jsonText);
     }
 });
 
 Meteor.startup(function () {
     // This gets executed before templates are rendered but after the DOM is ready and all the scripts are ready.
-
 });
 
-/*Blockly.JSON = new Blockly.Generator('JSON');
-
- Blockly.JSON.fromWorkspace = function(workspace) {
-
- var json_text = '';
-
- var top_blocks = workspace.getTopBlocks(false);
- for(var i in top_blocks) {
- var top_block = top_blocks[i];
-
- if(top_block.type == 'start') {
- var json_structure = this.generalBlockToObj( top_block );
-
- json_text += JSON.stringify(json_structure, null, 4) + '\n\n';
- }
- }
- //console.log(json_text);
- return json_text;
- };
-
- Blockly.JSON['start'] = function(block) {
-
- var json    = this.generalBlockToObj( block.getInputTargetBlock( 'json' ) );
-
- return json;
- };
-
- Blockly.JSON.generalBlockToObj = function(block) {
-
- if(block) {
-
- // dispatcher:
- var func = this[block.type];
- if(func) {
- return func.call(this, block);
- } else {
- console.log("Don't know how to generate JSON code for a '"+block.type+"'");
- }
- } else {
- return null;
- }
- };
-
- function getJSON()
- {
- Blockly.JSON.fromWorkspace(workspace);
- }*/
-
 // Changes XML to JSON
-function xmlToJson(xml) {
-
+var xmlToJson = function (xml) {
     // Create the return object
     var obj = {};
 
@@ -153,36 +106,3 @@ function xmlToJson(xml) {
     }
     return obj;
 };
-
-/*
- {"BLOCK":
- {"@attributes":
- {"type":"carddesc",
- "id":"sbuFQ)e]#Mw1J4:Iy~kD",
- "deletable":"false",
- "x":"0",
- "y":"0"},
- "FIELD":[{"@attributes":
- {"name":"id"},
- "#text":"id"},
- {"@attributes":
- {"name":"name"},
- "#text":"name"},
- {"@attributes":
- {"name":"description"},
- "#text":"description"},
- {"@attributes":
- {"name":"HeroClass"},
- "#text":"ANY"},
- {"@attributes":
- {"name":"Rarity"},
- "#text":"FREE"},
- {"@attributes":
- {"name":"baseManaCost"},
- "#text":"0"},
- {"@attributes":
- {"name":"collectible"},
- "#text":"TRUE"}]}}
- */
-
-
