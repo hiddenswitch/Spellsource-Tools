@@ -41,6 +41,6 @@ p
 #blocklyArea {
     position: absolute;
     width: 100%;
-    top: 0;
+    top: 35px;
     bottom: 0;
 }
