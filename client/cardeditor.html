@@ -1,6 +1,5 @@
 <template name="cardEditor">
     <div id="blocklyArea"></div>
-    <div id="blocklyDiv"></div>
     <xml id="toolbox" style="display: none">
         <category name="Card Types">
             <block type="minion"></block>
@@ -16,13 +15,25 @@
             <block type="color_white"></block>
             <block type="damagespelldesc"></block>
             <block type="battlecrydesc"></block>
-
-
-
         </category>
         <category name="Test Custom Block">
             <block type="string_length"></block>
 
         </category>
     </xml>
+</template>
+
+<template name="blocklyOverlay">
+    <div id="blocklyDiv"></div>
+</template>
+
+<template name="cardEditorNavbar">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a id="navbar-link-1" class="nav-link" href="">Link</a>
+        </li>
+        <li class="nav-item">
+            <button id='navbar-button-1' class="btn btn-outline-info my-2 my-sm-0" type="submit">Button</button>
+        </li>
+    </ul>
 </template>

@@ -37,6 +37,15 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setDeletable(false);
 });
 
+Template.cardEditorNavbar.events({
+    'click #navbar-button-1': function() {
+        alert('button clicked.');
+    },
+    'click #navbar-link-1': function() {
+        alert('link clicked');
+    }
+});
+
 Meteor.startup(function () {
     // This gets executed before templates are rendered but after the DOM is ready and all the scripts are ready.
 

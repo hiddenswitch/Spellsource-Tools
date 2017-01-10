@@ -1,0 +1,58 @@
+@import '{}/node_modules/bootstrap/scss/bootstrap.scss';
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+}
+
+#header {
+  color: #000;
+}
+
+#blocklyArea {
+  height: 100%;
+}
+
+#blockly {
+  border: 1px solid #CCC;
+  padding-left: 0;
+  height: 700px;
+}
+
+#blockly_editor {
+  width: 90%;
+  float: left;
+}
+
+#description {
+  width: 20%;
+  float: right;
+  margin-top: 0;
+}
+
+#button_run {
+  margin-left: 2%;
+}
+
+#blocklyDiv {
+  position: absolute;
+}
+
+.container-home {
+  padding-top: 15px;
+}
+
+.container-editor {
+  margin: 0;
+  padding: 0;
+  top: 54px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  width: auto;
+  height: auto
+}
