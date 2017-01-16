@@ -10,8 +10,11 @@
     "font-awesome": "^4.7.0",
     "meteor-node-stubs": "~0.2.3",
     "node-blockly": "^1.0.14",
+    "node-curl-download": "0.0.2",
     "tether": "^1.4.0",
-    "xmldom": "^0.1.27"
+    "walk": "^2.3.9",
+    "xmldom": "^0.1.27",
+    "extract-zip": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1"
