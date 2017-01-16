@@ -115,15 +115,15 @@ var workspaceToJSON = function ()
 {
     // gets the single block at the start of the workspace
     var blocks = workspace.getTopBlocks(true);
-    console.log(blocks.toString());
+    //console.log(blocks.toString());
     blocks.forEach(function(block)
     {
         console.log("{\n");
         console.log("id:",block.getFieldValue("id"));
         console.log("name:",block.getFieldValue("name"));
         console.log("description:",block.getFieldValue("description"));
-        console.log("heroClass:",block.getFieldValue("heroClass"));
-        console.log("rarity:",block.getFieldValue("rarity"));
+        console.log("heroClass:",block.getFieldValue("HeroClass"));
+        console.log("rarity:",block.getFieldValue("Rarity"));
         console.log("set:",block.getFieldValue("set"));
         console.log("baseManaCost:",block.getFieldValue("baseManaCost"));
         console.log("collectible:",block.getFieldValue("collectible"));
@@ -132,7 +132,7 @@ var workspaceToJSON = function ()
         var children = block.getChildren();
         children.forEach(function(child)
         {
-            console.log(child.toString());
+            //console.log(child.toString());
             if(child.type == "minioncarddesc")
             {
                 console.log("type: MINION");
@@ -140,19 +140,21 @@ var workspaceToJSON = function ()
                 console.log("baseHp:",child.getFieldValue("baseHp"));
                 console.log("race:",child.getFieldValue("race"));
                 var test = child.getChildren()[0];
-                console.log("test0:", test);
-                console.log("Test:", test.toString());
+                //console.log("test0:", test);
+                //console.log("Test:", test.toString());
                 // var descendent = child.getNextBlock();
-                if(test[0].type == "battlecrydesc")
+                if(test.type == "battlecrydesc")
                 {
                     console.log("battlecry: {");
-                    console.log("targetSelection:", test[0].getFieldValue("targetSelection"));
-                    var d2 = test.getChildren();
-                    if (d2[0].type == "damagespelldesc")
+                    console.log("targetSelection:", test.getFieldValue("TargetSelection"));
+                    var d2 = test.getChildren()[0];
+                    //console.log("d2:", d2.toString());
+                    if (d2.type == "damagespelldesc")
                     {
                         console.log("spell:{")
                         console.log("class: DamageSpell");
-                        console.log("value:", d2[0].getFieldValue(value));
+                        console.log("value:", d2.getFieldValue("value"));
+                        console.log("}");
                     }
                 }
             }
