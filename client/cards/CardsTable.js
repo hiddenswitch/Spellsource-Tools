@@ -12,6 +12,8 @@ export default class CardsTable extends React.Component {
             collection={Cards}
             matchingResultsCount="cards-count"
             columns={['_id', 'gameDefinition.name', 'gameDefinition.description']}
+            filteredFields={['_id', 'gameDefinition.name', 'gameDefinition.description']}
+            showFilter
             externalLoadingComponent={CardsTableLoading}
         />);
     }
