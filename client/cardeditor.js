@@ -113,21 +113,22 @@ var xmlToJson = function (xml) {
 // This function will loop through the blocks in the workspace and construct a JSON file
 var workspaceToJSON = function ()
 {
+    var jsonString = "";
     // gets the single block at the start of the workspace
     var blocks = workspace.getTopBlocks(true);
     //console.log(blocks.toString());
     blocks.forEach(function(block)
     {
-        console.log("{\n");
-        console.log("id:",block.getFieldValue("id"));
-        console.log("name:",block.getFieldValue("name"));
-        console.log("description:",block.getFieldValue("description"));
-        console.log("heroClass:",block.getFieldValue("HeroClass"));
-        console.log("rarity:",block.getFieldValue("Rarity"));
-        console.log("set:",block.getFieldValue("set"));
-        console.log("baseManaCost:",block.getFieldValue("baseManaCost"));
-        console.log("collectible:",block.getFieldValue("collectible"));
-        console.log("fileFormatVersion:",block.getFieldValue("fileFormatVersion"));
+        jsonString += "{\n";
+        jsonString +="id:" + block.getFieldValue("id") + ",\n";
+        jsonString +="name:" + block.getFieldValue("name") + ",\n";
+        jsonString +="description:" + block.getFieldValue("description") + ",\n";
+        jsonString +="heroClass:" + block.getFieldValue("HeroClass") + ",\n";
+        jsonString +="rarity:" + block.getFieldValue("Rarity") + ",\n";
+        jsonString +="set:" + block.getFieldValue("set") + ",\n";
+        jsonString +="baseManaCost:" + block.getFieldValue("baseManaCost") + ",\n";
+        jsonString +="collectible:" + block.getFieldValue("collectible") + ",\n";
+        jsonString +="fileFormatVersion:" + block.getFieldValue("fileFormatVersion") + ",\n";
 
         var children = block.getChildren();
         children.forEach(function(child)
@@ -135,30 +136,32 @@ var workspaceToJSON = function ()
             //console.log(child.toString());
             if(child.type == "minioncarddesc")
             {
-                console.log("type: MINION");
-                console.log("baseAttack:",child.getFieldValue("baseAttack"));
-                console.log("baseHp:",child.getFieldValue("baseHp"));
-                console.log("race:",child.getFieldValue("race"));
+                jsonString +="type: MINION" + ",\n";;
+                jsonString +="baseAttack:" + child.getFieldValue("baseAttack") + ",\n";
+                jsonString +="baseHp:" + child.getFieldValue("baseHp") + ",\n";
+                jsonString +="race:" + child.getFieldValue("race") + ",\n";
                 var test = child.getChildren()[0];
                 //console.log("test0:", test);
                 //console.log("Test:", test.toString());
                 // var descendent = child.getNextBlock();
                 if(test.type == "battlecrydesc")
                 {
-                    console.log("battlecry: {");
-                    console.log("targetSelection:", test.getFieldValue("TargetSelection"));
+                    jsonString +="battlecry: {" + "\n";
+                    jsonString +="targetSelection:" + test.getFieldValue("TargetSelection") + ",\n";
                     var d2 = test.getChildren()[0];
                     //console.log("d2:", d2.toString());
                     if (d2.type == "damagespelldesc")
                     {
-                        console.log("spell:{")
-                        console.log("class: DamageSpell");
-                        console.log("value:", d2.getFieldValue("value"));
-                        console.log("}");
+                        jsonString +="spell:{" + "\n";
+                        jsonString +="class: DamageSpell" + ",\n";
+                        jsonString +="value:" + d2.getFieldValue("value") + ",\n";
+                        jsonString +="}" + "\n";
                     }
                 }
             }
         })
+
+        document.getElementById('jsonText').value = jsonString;
         // check the type of child to determine which fields will be grabbed
         //console.log(block.getChildren(), "...");
         /*console.log("{\n");
