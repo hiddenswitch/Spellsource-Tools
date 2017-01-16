@@ -41,6 +41,7 @@ Template.cardEditor.onRendered(function () {
     rootBlock.render();
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
+    console.log(rootBlock.toString());
 });
 
 Template.cardEditor.onDestroyed(function () {
@@ -59,6 +60,8 @@ Template.cardEditorNavbar.events({
         console.log(xml);
         console.log(xmlText);
         console.log(jsonText);
+
+        workspaceToJSON();
     },
     'click #navbar-link-1': function () {
         alert('link clicked');
@@ -106,3 +109,22 @@ var xmlToJson = function (xml) {
     }
     return obj;
 };
+
+var workspaceToJSON = function ()
+{
+    var blocks = workspace.getTopBlocks(true);
+    console.log(blocks);
+    blocks.forEach(function(block)
+    {
+        console.log(block.toString(), "--");
+        console.log("Id:" , block.getField("id"));
+        console.log("Id value: " , block.getFieldValue("id") , ";");
+        var children = block.getChildren();
+        children.forEach(function(child)
+        {
+            console.log(child.toString() , "...");
+
+        })
+
+    })
+}
