@@ -1,7 +1,7 @@
 /**
  * Created by bberman on 1/16/17.
  */
-import {CardCatalogue} from './cards';
+import {CardCatalogue} from './CardCatalogue';
 
 Migrations.add({
     name: 'Load cards database',
