@@ -41,7 +41,7 @@ Template.cardEditor.onRendered(function () {
     rootBlock.render();
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
-    console.log(rootBlock.toString());
+    //console.log(rootBlock.toString());
 });
 
 Template.cardEditor.onDestroyed(function () {
@@ -57,9 +57,9 @@ Template.cardEditorNavbar.events({
         var xmlText = Blockly.Xml.domToPrettyText(xml);
         var jsonText = JSON.stringify(xmlToJson(xml));
 
-        console.log(xml);
-        console.log(xmlText);
-        console.log(jsonText);
+        //console.log(xml);
+        //console.log(xmlText);
+        //console.log(jsonText);
 
         workspaceToJSON();
     },
@@ -110,21 +110,76 @@ var xmlToJson = function (xml) {
     return obj;
 };
 
+// This function will loop through the blocks in the workspace and construct a JSON file
 var workspaceToJSON = function ()
 {
+    // gets the single block at the start of the workspace
     var blocks = workspace.getTopBlocks(true);
-    console.log(blocks);
+    console.log(blocks.toString());
     blocks.forEach(function(block)
     {
-        console.log(block.toString(), "--");
-        console.log("Id:" , block.getField("id"));
-        console.log("Id value: " , block.getFieldValue("id") , ";");
+        console.log("{\n");
+        console.log("id:",block.getFieldValue("id"));
+        console.log("name:",block.getFieldValue("name"));
+        console.log("description:",block.getFieldValue("description"));
+        console.log("heroClass:",block.getFieldValue("heroClass"));
+        console.log("rarity:",block.getFieldValue("rarity"));
+        console.log("set:",block.getFieldValue("set"));
+        console.log("baseManaCost:",block.getFieldValue("baseManaCost"));
+        console.log("collectible:",block.getFieldValue("collectible"));
+        console.log("fileFormatVersion:",block.getFieldValue("fileFormatVersion"));
+
         var children = block.getChildren();
         children.forEach(function(child)
         {
-            console.log(child.toString() , "...");
-
+            console.log(child.toString());
+            if(child.type == "minioncarddesc")
+            {
+                console.log("type: MINION");
+                console.log("baseAttack:",child.getFieldValue("baseAttack"));
+                console.log("baseHp:",child.getFieldValue("baseHp"));
+                console.log("race:",child.getFieldValue("race"));
+                var test = child.getChildren()[0];
+                console.log("test0:", test);
+                console.log("Test:", test.toString());
+                // var descendent = child.getNextBlock();
+                if(test[0].type == "battlecrydesc")
+                {
+                    console.log("battlecry: {");
+                    console.log("targetSelection:", test[0].getFieldValue("targetSelection"));
+                    var d2 = test.getChildren();
+                    if (d2[0].type == "damagespelldesc")
+                    {
+                        console.log("spell:{")
+                        console.log("class: DamageSpell");
+                        console.log("value:", d2[0].getFieldValue(value));
+                    }
+                }
+            }
         })
+        // check the type of child to determine which fields will be grabbed
+        //console.log(block.getChildren(), "...");
+        /*console.log("{\n");
+        //console.log(block.toString(), "--");
+
+
+        console.log("type:",block.getFieldValue("type"));
+        console.log("baseAttack:",block.getFieldValue("baseAttack"));
+        console.log("baseHp:",block.getFieldValue("baseHp"));
+
+
+        console.log("battlecry:",block.getFieldValue("battlecry"));
+        console.log("targetSelection:",block.getFieldValue("targetSelection"));
+        console.log("spell:",block.getFieldValue("spell"));
+        console.log("class:",block.getFieldValue("class"));
+        console.log("value:",block.getFieldValue("value"));
+        console.log("attributes:",block.getFieldValue("attributes"));
+        console.log("BATTLECRY:",block.getFieldValue("BATTLECRY"));
+
+
+
+        //console.log("Id value: " , block.getFieldValue("collectible") , ";");
+        console.log("}");*/
 
     })
 }
