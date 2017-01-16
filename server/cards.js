@@ -5,6 +5,7 @@ import {Download} from 'node-curl-download';
 import fs from "fs";
 import extract from "extract-zip";
 import walk from "walk";
+import winston from "winston";
 
 export class CardCatalogue {
     static loadCardsFromMetastone() {
@@ -24,7 +25,8 @@ export class CardCatalogue {
         const isDownloaded = waitUntilDownloaded();
 
         if (!isDownloaded) {
-            throw new Meteor.Error('Could not download the metastone zip file. Do you have CURL installed?');
+            winston.error('Could not download the metastone zip file. Do you have CURL installed?');
+            return;
         }
 
         const waitUntilExtracted = Meteor.wrapAsync(extract);
@@ -47,7 +49,7 @@ export class CardCatalogue {
 
                 fs.readFile(path, Meteor.bindEnvironment((err, dataBuffer) => {
                     if (err) {
-                        console.error(err);
+                        winston.error('Could not open the specified file. Path: {0}, error: {1}'.format(path, err));
                         done();
                         return;
                     }
@@ -68,8 +70,7 @@ export class CardCatalogue {
                         }, done);
                     } catch (e) {
                         // TODO: Fix the logging situation here
-                        console.error(e);
-                        console.error(dataBuffer.toString());
+                        winston.error('Could not process a Metastone card. File path: {0}, error: {1}'.format(path, e));
                         done();
                     }
                 }));
