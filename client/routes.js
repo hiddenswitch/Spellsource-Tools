@@ -16,4 +16,11 @@ FlowRouter.route('/editor', {
     action(params, queryParams) {
         BlazeLayout.render('mainLayout', {content: 'cardEditor', overlay: 'blocklyOverlay', navbar: 'cardEditorNavbar'})
     }
-})
+});
+
+FlowRouter.route('/cards', {
+    name: 'cards',
+    action(params, queryParams) {
+        BlazeLayout.render('mainLayout', {content: 'cards'});
+    }
+});

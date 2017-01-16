@@ -28,3 +28,9 @@ shell-server
 fourseven:scss
 juliancwirko:postcss
 arillo:flow-router-helpers
+percolate:migrations
+http
+react-template-helper
+utilities:meteor-griddle
+react-meteor-data
+tmeasday:publish-counts
