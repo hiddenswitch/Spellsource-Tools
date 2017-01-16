@@ -120,15 +120,15 @@ var workspaceToJSON = function ()
     blocks.forEach(function(block)
     {
         jsonString += "{\n";
-        jsonString +="id:" + block.getFieldValue("id") + ",\n";
-        jsonString +="name:" + block.getFieldValue("name") + ",\n";
-        jsonString +="description:" + block.getFieldValue("description") + ",\n";
-        jsonString +="heroClass:" + block.getFieldValue("HeroClass") + ",\n";
-        jsonString +="rarity:" + block.getFieldValue("Rarity") + ",\n";
-        jsonString +="set:" + block.getFieldValue("set") + ",\n";
-        jsonString +="baseManaCost:" + block.getFieldValue("baseManaCost") + ",\n";
-        jsonString +="collectible:" + block.getFieldValue("collectible") + ",\n";
-        jsonString +="fileFormatVersion:" + block.getFieldValue("fileFormatVersion") + ",\n";
+        jsonString +="id: " + block.getFieldValue("id") + ",\n";
+        jsonString +="name: " + block.getFieldValue("name") + ",\n";
+        jsonString +="description: " + block.getFieldValue("description") + ",\n";
+        jsonString +="heroClass: " + block.getFieldValue("HeroClass") + ",\n";
+        jsonString +="rarity: " + block.getFieldValue("Rarity") + ",\n";
+        jsonString +="set: " + block.getFieldValue("set") + ",\n";
+        jsonString +="baseManaCost: " + block.getFieldValue("baseManaCost") + ",\n";
+        jsonString +="collectible: " + block.getFieldValue("collectible") + ",\n";
+        jsonString +="fileFormatVersion: " + block.getFieldValue("fileFormatVersion") + ",\n";
 
         var children = block.getChildren();
         children.forEach(function(child)
@@ -137,9 +137,9 @@ var workspaceToJSON = function ()
             if(child.type == "minioncarddesc")
             {
                 jsonString +="type: MINION" + ",\n";;
-                jsonString +="baseAttack:" + child.getFieldValue("baseAttack") + ",\n";
-                jsonString +="baseHp:" + child.getFieldValue("baseHp") + ",\n";
-                jsonString +="race:" + child.getFieldValue("race") + ",\n";
+                jsonString +="baseAttack: " + child.getFieldValue("baseAttack") + ",\n";
+                jsonString +="baseHp: " + child.getFieldValue("baseHp") + ",\n";
+                jsonString +="race: " + child.getFieldValue("race") + ",\n";
                 var test = child.getChildren()[0];
                 //console.log("test0:", test);
                 //console.log("Test:", test.toString());
@@ -147,14 +147,15 @@ var workspaceToJSON = function ()
                 if(test.type == "battlecrydesc")
                 {
                     jsonString +="battlecry: {" + "\n";
-                    jsonString +="targetSelection:" + test.getFieldValue("TargetSelection") + ",\n";
+                    jsonString +="targetSelection: " + test.getFieldValue("TargetSelection") + ",\n";
                     var d2 = test.getChildren()[0];
                     //console.log("d2:", d2.toString());
                     if (d2.type == "damagespelldesc")
                     {
-                        jsonString +="spell:{" + "\n";
+                        jsonString +="spell: {" + "\n";
                         jsonString +="class: DamageSpell" + ",\n";
-                        jsonString +="value:" + d2.getFieldValue("value") + ",\n";
+                        jsonString +="value: " + d2.getFieldValue("value") + ",\n";
+                        jsonString +="}" + "\n";
                         jsonString +="}" + "\n";
                     }
                 }
