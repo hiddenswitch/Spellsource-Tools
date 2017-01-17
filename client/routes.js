@@ -7,20 +7,39 @@ BlazeLayout.setRoot('body');
 FlowRouter.route('/', {
     name: 'home',
     action(params, queryParams) {
-        BlazeLayout.render("mainLayout", {content: "home"});
+        BlazeLayout.render("mainLayout", {
+            content: "home"
+        });
     }
 });
 
 FlowRouter.route('/editor', {
     name: 'editor',
     action(params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: 'cardEditor', overlay: 'blocklyOverlay', navbar: 'cardEditorNavbar'})
+        BlazeLayout.render('mainLayout', {
+            content: 'cardEditor',
+            overlay: 'blocklyOverlay',
+            navbar: 'cardEditorNavbar'
+        })
     }
 });
 
 FlowRouter.route('/cards', {
     name: 'cards',
     action(params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: 'cards'});
+        BlazeLayout.render('mainLayout', {
+            content: 'cards'
+        });
+    }
+});
+
+FlowRouter.route('/cards/:cardId', {
+    name: 'cards-edit',
+    action(params, queryParams) {
+        BlazeLayout.render('mainLayout', {
+            content: 'cardsCodeEditor',
+            topOverlay: 'toastContainer',
+            navbar: 'cardCodeNavbar'
+        });
     }
 });
