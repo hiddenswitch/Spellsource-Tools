@@ -3,63 +3,6 @@
  */
 import * as Blockly from 'node-blockly/browser';
 
-Blockly.Blocks['minioncarddesc'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Type:")
-            .appendField("MINION");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldTextInput("id"), "id")
-            .appendField(new Blockly.FieldTextInput("name"), "name")
-            .appendField(new Blockly.FieldDropdown([["ANY", "ANY"], ["option", "OPTIONNAME"], ["option", "OPTIONNAME"]]), "heroClass");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldTextInput("description"), "description");
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["COMMON", "COMMON"], ["option", "OPTIONNAME"], ["option", "OPTIONNAME"]]), "rarity")
-            .appendField(new Blockly.FieldDropdown([["BASIC", "BASIC"], ["option", "OPTIONNAME"], ["option", "OPTIONNAME"]]), "set")
-            .appendField("collectible")
-            .appendField(new Blockly.FieldCheckbox("TRUE"), "collectible");
-        this.appendDummyInput()
-            .appendField("baseManaCost")
-            .appendField(new Blockly.FieldNumber(0, 0, 30), "baseManaCost");
-        this.appendDummyInput()
-            .appendField("baseAttack")
-            .appendField(new Blockly.FieldNumber(0, 0, 31), "baseAttack")
-            .appendField("baseHp")
-            .appendField(new Blockly.FieldNumber(0, 1, 31), "baseHp")
-            .appendField("race")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["option", "OPTIONNAME"], ["option", "OPTIONNAME"]]), "race");
-        this.appendValueInput("passiveTrigger")
-            .setCheck("TriggerDesc")
-            .appendField("passiveTrigger");
-        this.appendValueInput("deckTrigger")
-            .setCheck("TriggerDesc")
-            .appendField("deckTrigger");
-        this.appendStatementInput("battlecry")
-            .setCheck("BattlecryDesc")
-            .appendField("battlecry");
-        this.appendStatementInput("deathrattle")
-            .setCheck("SpellDesc")
-            .appendField("deathrattle");
-        this.appendStatementInput("triggers")
-            .setCheck("TriggerDesc")
-            .appendField("triggers");
-        this.appendStatementInput("attributes")
-            .setCheck("Attribute")
-            .appendField("attributes");
-        this.appendValueInput("aura")
-            .setCheck("AuraDesc")
-            .appendField("aura");
-        this.appendValueInput("cardCostModifier")
-            .setCheck("CardCostModifierDesc")
-            .appendField("cardCostModifier");
-        this.setInputsInline(false);
-        this.setColour(120);
-        this.setTooltip('');
-        this.setHelpUrl('http://www.example.com/');
-    }
-};
-
 Blockly.Blocks['damagespelldesc'] = {
     init: function () {
         this.appendDummyInput()
@@ -111,25 +54,25 @@ Blockly.Blocks['minioncarddesc'] = {
         this.appendDummyInput()
             .appendField("race")
             .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["BEAST","BEAST"], ["MURLOC","MURLOC"], ["PIRATE","PIRATE"], ["DEMON","DEMON"], ["DRAGON","DRAGON"], ["TOTEM","TOTEM"], ["MECH","MECH"]]), "race");
-        this.appendStatementInput("battlecrydesc")
+        this.appendStatementInput("battlecry")
             .setCheck("battlecrydesc")
             .appendField("battlecry");
-        this.appendStatementInput("spelldesc")
+        this.appendStatementInput("spell")
             .setCheck("spelldesc")
             .appendField("deathrattle");
-        this.appendStatementInput("triggerdesc")
+        this.appendStatementInput("trigger")
             .setCheck("triggerdesc")
             .appendField("trigger");
-        this.appendStatementInput("triggerdesc[]")
+        this.appendStatementInput("triggers")
             .setCheck("triggerdesc[]")
             .appendField("triggers");
         this.appendStatementInput("auradesc")
             .setCheck("auradesc")
             .appendField("aura");
-        this.appendStatementInput("NAME")
+        this.appendStatementInput("options")
             .setCheck("battlecrydesc")
             .appendField("options");
-        this.appendStatementInput("NAME")
+        this.appendStatementInput("bothoptions")
             .setCheck("battlecrydesc")
             .appendField("bothOptions");
         this.setInputsInline(false);
@@ -280,6 +223,9 @@ Blockly.Blocks['damagespelldesc'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("DamageSpellDesc");
+        this.appendDummyInput()
+            .appendField('class')
+            .appendField(new Blockly.FieldTextInput('DamageSpell'), 'class');
         this.appendDummyInput()
             .appendField("value")
             .appendField(new Blockly.FieldTextInput("value"), "value");

@@ -52,16 +52,36 @@ export default class WorkspaceUtils {
         return output;
     }
 
-    static append(output, nextBlock) {
-
+    static append(output, block) {
         // Handle the first block
-        nextBlock.FIELD.forEach((field) => {
-            output[field['@attributes'].name] = field['#text'];
-        });
+        if (!!block.FIELD) {
+            if (!_.isArray(block.FIELD)) {
+                block.FIELD = [block.FIELD];
+            }
 
-        if (!!nextBlock.NEXT) {
-            // Continue appending to current output
-            WorkspaceUtils.append(output, nextBlock.NEXT.BLOCK);
+            block.FIELD.forEach((field) => {
+                output[field['@attributes'].name] = field['#text'];
+            });
         }
+
+
+        if (!!block.NEXT) {
+            // Continue appending to current output
+            WorkspaceUtils.append(output, block.NEXT.BLOCK);
+        }
+
+        // TODO: What happens when there's a next AND a statement??
+
+        if (!!block.STATEMENT) {
+            if (!_.isArray(block.STATEMENT)) {
+                block.STATEMENT = [block.STATEMENT];
+            }
+
+            block.STATEMENT.forEach((statement) => {
+                output[statement['@attributes'].name] = WorkspaceUtils.append({}, statement.BLOCK);
+            });
+        }
+
+        return output;
     }
 }
