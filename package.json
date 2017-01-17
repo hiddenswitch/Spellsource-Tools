@@ -15,6 +15,7 @@
     "node-curl-download": "0.0.2",
     "react": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",
+    "react-codemirror": "^0.3.0",
     "react-dom": "^15.4.2",
     "tether": "^1.4.0",
     "walk": "^2.3.9",
