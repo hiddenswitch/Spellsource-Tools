@@ -1,0 +1,7 @@
+.CodeMirror, .ReactCodeMirror {
+    height: 100% !important;
+}
+
+.CodeMirror-container {
+    height: 100%;
+}

@@ -28,6 +28,10 @@ FlowRouter.route('/cards', {
 FlowRouter.route('/cards/:cardId', {
     name: 'cards-edit',
     action(params, queryParams) {
-        BlazeLayout.render('mainLayout', {content: 'cardsCodeEditor'});
+        BlazeLayout.render('mainLayout', {
+            content: 'cardsCodeEditor',
+            topOverlay: 'toastContainer',
+            navbar: 'cardCodeNavbar'
+        });
     }
 });
