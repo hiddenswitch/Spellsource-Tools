@@ -140,11 +140,11 @@ ClassSpec.types = {
     [ParserValueType.CONDITION_ARRAY]: 'ConditionDesc[]',
     [ParserValueType.TRIGGER]: 'TriggerDesc',
     [ParserValueType.EVENT_TRIGGER]: 'EventTriggerDesc',
-    [ParserValueType.CARD_COST_MODIFIER]: '',
-    [ParserValueType.CARD_SOURCE]: '',
-    [ParserValueType.VALUE_PROVIDER]: '',
-    [ParserValueType.ENTITY_FILTER]: '',
-    [ParserValueType.ENTITY_FILTER_ARRAY]: ''
+    [ParserValueType.CARD_COST_MODIFIER]: 'CardCostModifierDesc',
+    [ParserValueType.CARD_SOURCE]: 'SourceDesc',
+    [ParserValueType.VALUE_PROVIDER]: 'ValueProviderDesc',
+    [ParserValueType.ENTITY_FILTER]: 'FilterDesc',
+    [ParserValueType.ENTITY_FILTER_ARRAY]: 'FilterDesc[]'
 };
 
 export class FieldSpec {
