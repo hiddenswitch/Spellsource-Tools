@@ -48,7 +48,9 @@ Blockly.JavaScript['battlecrydesc'] = function(block) {
 };
 
 Blockly.JavaScript['minioncarddesc'] = function(block) {
+    var number_baseattack = block.getFieldValue('baseAttack');
     var text_baseattack = block.getFieldValue('baseAttack');
+    var number_basehp = block.getFieldValue('baseHp');
     var text_basehp = block.getFieldValue('baseHp');
     var dropdown_race = block.getFieldValue('race');
     var statements_battlecrydesc = Blockly.JavaScript.statementToCode(block, 'battlecrydesc');
@@ -80,9 +82,11 @@ Blockly.JavaScript['carddesc'] = function(block) {
     var dropdown_heroclass = block.getFieldValue('HeroClass');
     var dropdown_rarity = block.getFieldValue('Rarity');
     var dropdown_set = block.getFieldValue('set');
+    var number_basemanacost = block.getFieldValue('baseManaCost');
     var text_basemanacost = block.getFieldValue('baseManaCost');
     var checkbox_collectible = block.getFieldValue('collectible') == 'TRUE';
     var statements_attributes = Blockly.JavaScript.statementToCode(block, 'Attributes');
+    var number_fileformatversion = block.getFieldValue('fileFormatVersion');
     var text_fileformatversion = block.getFieldValue('fileFormatVersion');
     // TODO: Assemble JavaScript into code variable.
     var code = 'document.getElementByType("carddesc").innerHTML = "' + statements_attributes + '";\n';

@@ -84,4 +84,10 @@ export default class WorkspaceUtils {
 
         return output;
     }
+
+    // TODO: method that constructs blocks from java
+    static blockFromJava()
+    {
+
+    }
 }

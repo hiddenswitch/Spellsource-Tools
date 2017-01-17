@@ -48,9 +48,11 @@ Blockly.Blocks['minioncarddesc'] = {
             .appendField("CardType: MINION");
         this.appendDummyInput()
             .appendField("baseAttack")
-            .appendField(new Blockly.FieldTextInput("0"), "baseAttack")
+            .appendField(new Blockly.FieldNumber(0,0,10), "baseAttack")
+            //.appendField(new Blockly.FieldTextInput("0"), "baseAttack")
             .appendField("baseHp")
-            .appendField(new Blockly.FieldTextInput("0"), "baseHp");
+            .appendField(new Blockly.FieldNumber(0,0,10), "baseHp")
+            //.appendField(new Blockly.FieldTextInput("0"), "baseHp");
         this.appendDummyInput()
             .appendField("race")
             .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["BEAST","BEAST"], ["MURLOC","MURLOC"], ["PIRATE","PIRATE"], ["DEMON","DEMON"], ["DRAGON","DRAGON"], ["TOTEM","TOTEM"], ["MECH","MECH"]]), "race");
@@ -125,7 +127,8 @@ Blockly.Blocks['carddesc'] = {
             .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["BASIC","BASIC"], ["CLASSIC","CLASSIC"], ["REWARD","REWARD"], ["PROMO","PROMO"], ["NAXXRAMAS","MAXXRAMAS"], ["GOBLINS_VS_GNOMES","GOBLINS_VS_GNOMES"], ["BLACKROCK_MOUNTAIN","BLACKROCK_MOUNTAIN"], ["THE_GRAND_TOURNAMENT","THE_GRAND_TOURNAMENT"], ["LEAGUE_OF_EXPLORERS","LEAGUE_OF_EXPLORERS"], ["THE_OLD_GODS","THE_OLD_GODS"], ["ONE_NIGHT_IN_KARAZHAN","ONE_NIGHT_IN_KARAZHAN"], ["MEAN_STREETS_OF_GADGETZHAN","MEAN_STREETS_OF_GADGETZHAN"], ["PROCEDURAL_PREVIEW","PROCEDURAL_PREVIEW"], ["CUSTOM","CUSTOM"]]), "set");
         this.appendDummyInput()
             .appendField("baseManaCost")
-            .appendField(new Blockly.FieldTextInput("0"), "baseManaCost");
+            .appendField(new Blockly.FieldNumber(0,0,10), "baseManaCost")
+            //.appendField(new Blockly.FieldTextInput("0"), "baseManaCost");
         this.appendDummyInput()
             .appendField("collectible")
             .appendField(new Blockly.FieldCheckbox("TRUE"), "collectible");
@@ -134,7 +137,8 @@ Blockly.Blocks['carddesc'] = {
             .appendField("attributes");
         this.appendDummyInput()
             .appendField("fileFormatVersion")
-            .appendField(new Blockly.FieldTextInput("1"), "fileFormatVersion");
+            .appendField(new Blockly.FieldNumber(0,1,1), "fileFormatVersion")
+            //.appendField(new Blockly.FieldTextInput("1"), "fileFormatVersion");
         this.appendDummyInput()
             .appendField("cardType");
         this.setInputsInline(false);
