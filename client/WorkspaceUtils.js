@@ -85,32 +85,7 @@ export default class WorkspaceUtils {
                     }
                 }
             });
-
-            document.getElementById('jsonText').value = jsonString;
-            // check the type of child to determine which fields will be grabbed
-            //console.log(block.getChildren(), "...");
-            /*console.log("{\n");
-             //console.log(block.toString(), "--");
-
-
-             console.log("type:",block.getFieldValue("type"));
-             console.log("baseAttack:",block.getFieldValue("baseAttack"));
-             console.log("baseHp:",block.getFieldValue("baseHp"));
-
-
-             console.log("battlecry:",block.getFieldValue("battlecry"));
-             console.log("targetSelection:",block.getFieldValue("targetSelection"));
-             console.log("spell:",block.getFieldValue("spell"));
-             console.log("class:",block.getFieldValue("class"));
-             console.log("value:",block.getFieldValue("value"));
-             console.log("attributes:",block.getFieldValue("attributes"));
-             console.log("BATTLECRY:",block.getFieldValue("BATTLECRY"));
-
-
-
-             //console.log("Id value: " , block.getFieldValue("collectible") , ";");
-             console.log("}");*/
-
         });
+        return jsonString;
     }
 }

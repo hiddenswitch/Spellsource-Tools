@@ -62,7 +62,7 @@ Template.cardEditorNavbar.events({
         //console.log(xmlText);
         //console.log(jsonText);
 
-        WorkspaceUtils.workspaceToJSON(workspace);
+        console.log(WorkspaceUtils.workspaceToJSON(workspace));
     },
     'click #navbar-link-1': function () {
         alert('link clicked');
