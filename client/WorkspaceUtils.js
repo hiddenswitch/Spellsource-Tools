@@ -58,5 +58,10 @@ export default class WorkspaceUtils {
         nextBlock.FIELD.forEach((field) => {
             output[field['@attributes'].name] = field['#text'];
         });
+
+        if (!!nextBlock.NEXT) {
+            // Continue appending to current output
+            WorkspaceUtils.append(output, nextBlock.NEXT.BLOCK);
+        }
     }
 }

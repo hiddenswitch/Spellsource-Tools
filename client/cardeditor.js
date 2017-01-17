@@ -58,6 +58,7 @@ Template.cardEditorNavbar.events({
         var dictionary = WorkspaceUtils.xmlToDictionary(xml);
 
         console.log(WorkspaceUtils.workspaceToDictionary(workspace));
+        debugger;
     },
     'click #navbar-link-1': function () {
         alert('link clicked');
