@@ -55,7 +55,7 @@ Blockly.Blocks['minioncarddesc'] = {
             .appendField("race")
             .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["BEAST","BEAST"], ["MURLOC","MURLOC"], ["PIRATE","PIRATE"], ["DEMON","DEMON"], ["DRAGON","DRAGON"], ["TOTEM","TOTEM"], ["MECH","MECH"]]), "race");
         this.appendStatementInput("battlecry")
-            .setCheck("battlecrydesc")
+            .setCheck("battlecry")
             .appendField("battlecry");
         this.appendStatementInput("spell")
             .setCheck("spelldesc")
@@ -118,8 +118,8 @@ Blockly.Blocks['carddesc'] = {
             .appendField("heroClass")
             .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["DECK_COLLECTION","DECK_COLLECTION"], ["NEUTRAL","NEUTRAL"], ["DRUID","DRUID"], ["HUNTER","HUNTER"], ["MAGE","MAGE"], ["PALADIN","PALADIN"], ["PRIEST","PRIEST"], ["ROGUE","ROGUE"], ["SHAMAN","SHAMAN"], ["WARLOCK","WARLOCK"], ["WARRIOR","WARRIOR"], ["SELF","SELF"], ["OPPONENT","OPPONENT"], ["BOSS","BOSS"]]), "heroClass");
         this.appendDummyInput()
-            .appendField("harity")
-            .appendField(new Blockly.FieldDropdown([["FREE","FREE"], ["COMMON","COMMON"], ["RARE","RARE"], ["EPIC","EPIC"], ["LEGENDARY","LEGENDARY"]]), "Rarity");
+            .appendField("rarity")
+            .appendField(new Blockly.FieldDropdown([["FREE","FREE"], ["COMMON","COMMON"], ["RARE","RARE"], ["EPIC","EPIC"], ["LEGENDARY","LEGENDARY"]]), "rarity");
         this.appendDummyInput()
             .appendField("cardSet")
             .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["BASIC","BASIC"], ["CLASSIC","CLASSIC"], ["REWARD","REWARD"], ["PROMO","PROMO"], ["NAXXRAMAS","MAXXRAMAS"], ["GOBLINS_VS_GNOMES","GOBLINS_VS_GNOMES"], ["BLACKROCK_MOUNTAIN","BLACKROCK_MOUNTAIN"], ["THE_GRAND_TOURNAMENT","THE_GRAND_TOURNAMENT"], ["LEAGUE_OF_EXPLORERS","LEAGUE_OF_EXPLORERS"], ["THE_OLD_GODS","THE_OLD_GODS"], ["ONE_NIGHT_IN_KARAZHAN","ONE_NIGHT_IN_KARAZHAN"], ["MEAN_STREETS_OF_GADGETZHAN","MEAN_STREETS_OF_GADGETZHAN"], ["PROCEDURAL_PREVIEW","PROCEDURAL_PREVIEW"], ["CUSTOM","CUSTOM"]]), "set");
@@ -129,8 +129,8 @@ Blockly.Blocks['carddesc'] = {
         this.appendDummyInput()
             .appendField("collectible")
             .appendField(new Blockly.FieldCheckbox("TRUE"), "collectible");
-        this.appendStatementInput("Attributes")
-            .setCheck("Attribute")
+        this.appendStatementInput("attributes")
+            .setCheck("attribute")
             .appendField("attributes");
         this.appendDummyInput()
             .appendField("fileFormatVersion")
@@ -169,7 +169,7 @@ Blockly.Blocks['spellcarddesc'] = {
             .appendField("Spell");
         this.appendDummyInput()
             .appendField("TargetSelection")
-            .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["AUTO","AUTO"], ["ANY","ANY"], ["MINIONS","MINIONS"], ["ENEMY_CHARACTERS","ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS","FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS","ENEMY_MINIONS"], ["FRIENDLY_MINIONS","FRIENDLY_MINIONS"], ["HEROES","HEROES"], ["ENEMY_HERO","ENEMY_HERO"], ["FRIENDLY_HERO","FRIENDLY_HERO"]]), "TargetSelection");
+            .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["AUTO","AUTO"], ["ANY","ANY"], ["MINIONS","MINIONS"], ["ENEMY_CHARACTERS","ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS","FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS","ENEMY_MINIONS"], ["FRIENDLY_MINIONS","FRIENDLY_MINIONS"], ["HEROES","HEROES"], ["ENEMY_HERO","ENEMY_HERO"], ["FRIENDLY_HERO","FRIENDLY_HERO"]]), "targetSelection");
         this.appendDummyInput()
             .appendField("SpellDesc")
             .appendField(new Blockly.FieldTextInput("spell"), "spell");
