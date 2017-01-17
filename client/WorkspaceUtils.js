@@ -4,6 +4,19 @@
 import * as Blockly from 'node-blockly/browser';
 import ParserValueType from '../ParserValueType';
 import HeroClass from '../HeroClass'
+import Rarity from '../Rarity'
+import Race from '../Race'
+import TargetSelection from '../TargetSelection'
+import Attribute from '../Attribute'
+import PlayerAttribute from '../PlayerAttribute'
+import CardLocation from '../CardLocation'
+import Operation from '../Operation'
+import AlgebraicOperation from '../Operation'
+import CardType from '../CardType'
+import EntityType from '../EntityType'
+import ActionType from '../ActionType'
+import TargetType from '../TargetType'
+import CardDescType from '../CardDescType'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
@@ -168,17 +181,17 @@ export class FieldSpec {
             case ParserValueType.INTEGER:
                 return new Blockly.FieldNumber(this.defaultValue.toString());
             case ParserValueType.TARGET_SELECTION:
-                break;
+                return new Blockly.FieldDropdown(TargetSelection.toBlocklyArray());
             case ParserValueType.TARGET_REFERENCE:
                 break;
             case ParserValueType.TARGET_PLAYER:
                 break;
             case ParserValueType.RACE:
-                break;
+                return new Blockly.FieldDropdown(Race.toBlocklyArray());
             case ParserValueType.ATTRIBUTE:
-                break;
+                return new Blockly.FieldDropdown(Attribute.toBlocklyArray());
             case ParserValueType.PLAYER_ATTRIBUTE:
-                break;
+                return new Blockly.FieldDropdown(PlayerAttribute.toBlocklyArray());
             case ParserValueType.STRING:
                 return new Blockly.FieldTextInput(this.defaultValue);
             case ParserValueType.STRING_ARRAY:
@@ -186,31 +199,32 @@ export class FieldSpec {
             case ParserValueType.BOARD_POSITION_RELATIVE:
                 break;
             case ParserValueType.CARD_LOCATION:
-                break;
+                return new Blockly.FieldDropdown(CardLocation.toBlocklyArray());
             case ParserValueType.OPERATION:
-                break;
+                return new Blockly.FieldDropdown(Operation.toBlocklyArray());
             case ParserValueType.ALGEBRAIC_OPERATION:
-                break;
+                return new Blockly.FieldDropdown(AlgebraicOperation.toBlocklyArray());
             case ParserValueType.CARD_TYPE:
-                break;
+                return new Blockly.FieldDropdown(CardType.toBlocklyArray());
             case ParserValueType.ENTITY_TYPE:
-                break;
+                return new Blockly.FieldDropdown(EntityType.toBlocklyArray());
             case ParserValueType.ACTION_TYPE:
-                break;
+                return new Blockly.FieldDropdown(ActionType.toBlocklyArray());
             case ParserValueType.TARGET_TYPE:
-                break;
+                return new Blockly.FieldDropdown(TargetType.toBlocklyArray());
             case ParserValueType.RARITY:
-                break;
+                return new Blockly.FieldDropdown(Rarity.toBlocklyArray());
             case ParserValueType.HERO_CLASS:
                 return new Blockly.FieldDropdown(HeroClass.toBlocklyArray());
             case ParserValueType.HERO_CLASS_ARRAY:
                 break;
             case ParserValueType.CARD_DESC_TYPE:
-                break;
+                return new Blockly.FieldDropdown(CardDescType.toBlocklyArray());
         }
     }
 }
 
 FieldSpec.statementValues = {
+    // spells are the only statement inputs for now
     [ParserValueType.SPELL]: true
 };

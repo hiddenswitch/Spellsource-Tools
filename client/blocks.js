@@ -253,3 +253,8 @@ Blockly.Blocks['test'] = new ClassSpec(
     [new FieldSpec({key: 'baseManaCost', parserValueType: ParserValueType.INTEGER, defaultValue: 3})],
     {name: 'Test'}
 ).toBlock();
+
+Blockly.Blocks['buffspell'] = new ClassSpec(
+    [new FieldSpec({key: 'rarity', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: 0}), new FieldSpec({key: 'damage', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'buffSpell'}
+).toBlock();
