@@ -5,6 +5,7 @@ import React from 'react';
 import {MeteorGriddle} from 'meteor/utilities:meteor-griddle';
 import CardsTableLoading from './CardsTableLoading';
 import CardsTableNameColumn from "./CardsTableNameColumn";
+import './griddle.css';
 
 export default class CardsTable extends React.Component {
     render() {
