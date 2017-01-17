@@ -1,10 +1,10 @@
 /**
  * Created by bberman on 1/17/17.
  */
-var k;
+import * as Blockly from 'node-blockly/browser';
 
 export default class WorkspaceUtils {
-    static xmlToJson(xml) {
+    static xmlToDictionary(xml) {
         // Create the return object
         let obj = {};
 
@@ -27,65 +27,36 @@ export default class WorkspaceUtils {
                 const item = xml.childNodes.item(i);
                 const nodeName = item.nodeName;
                 if (typeof(obj[nodeName]) == "undefined") {
-                    obj[nodeName] = WorkspaceUtils.xmlToJson(item);
+                    obj[nodeName] = WorkspaceUtils.xmlToDictionary(item);
                 } else {
                     if (typeof(obj[nodeName].push) == "undefined") {
                         const old = obj[nodeName];
                         obj[nodeName] = [];
                         obj[nodeName].push(old);
                     }
-                    obj[nodeName].push(WorkspaceUtils.xmlToJson(item));
+                    obj[nodeName].push(WorkspaceUtils.xmlToDictionary(item));
                 }
             }
         }
         return obj;
     };
 
-    static workspaceToJSON(workspace) {
-        let jsonString = "";
-        // gets the single block at the start of the workspace
-        const blocks = workspace.getTopBlocks(true);
-        //console.log(blocks.toString());
-        blocks.forEach((block) => {
-            jsonString += "{\n";
-            jsonString += "\"id\": \"" + block.getFieldValue("id") + "\",\n";
-            jsonString += "\"name\": \"" + block.getFieldValue("name") + "\",\n";
-            jsonString += "\"description\": \"" + block.getFieldValue("description") + "\",\n";
-            jsonString += "\"heroClass\": \"" + block.getFieldValue("HeroClass") + "\",\n";
-            jsonString += "\"rarity\": \"" + block.getFieldValue("Rarity") + "\",\n";
-            jsonString += "\"set\": \"" + block.getFieldValue("set") + "\",\n";
-            jsonString += "\"baseManaCost\": " + block.getFieldValue("baseManaCost") + ",\n";
-            jsonString += "\"collectible\": " + block.getFieldValue("collectible") + ",\n";
-            jsonString += "\"fileFormatVersion\": " + block.getFieldValue("fileFormatVersion") + ",\n";
+    static workspaceToDictionary(workspace) {
+        const xml = Blockly.Xml.workspaceToDom(workspace);
+        const dictionary = WorkspaceUtils.xmlToDictionary(xml);
 
-            const children = block.getChildren();
-            children.forEach((child) => {
-                //console.log(child.toString());
-                if (child.type == "minioncarddesc") {
-                    jsonString += "\"type\": \"MINION\"" + ",\n";
-                    jsonString += "\"baseAttack\": " + child.getFieldValue("baseAttack") + ",\n";
-                    jsonString += "\"baseHp\": " + child.getFieldValue("baseHp") + ",\n";
-                    jsonString += "\"race\": \"" + child.getFieldValue("race") + "\",\n";
-                    const test = child.getChildren()[0];
-                    //console.log("test0:", test);
-                    //console.log("Test:", test.toString());
-                    // var descendent = child.getNextBlock();
-                    if (test.type == "battlecrydesc") {
-                        jsonString += "\"battlecry\": {" + "\n";
-                        jsonString += "\"targetSelection\": \"" + test.getFieldValue("TargetSelection") + "\",\n";
-                        const d2 = test.getChildren()[0];
-                        //console.log("d2:", d2.toString());
-                        if (d2.type == "damagespelldesc") {
-                            jsonString += "\"spell\": {" + "\n";
-                            jsonString += "\"class\": \"DamageSpell\"" + ",\n";
-                            jsonString += "\"value\": " + d2.getFieldValue("value") + "\n";
-                            jsonString += "}" + "\n";
-                            jsonString += "}" + "\n";
-                        }
-                    }
-                }
-            });
+        let output = {};
+
+        WorkspaceUtils.append(output, dictionary.BLOCK);
+
+        return output;
+    }
+
+    static append(output, nextBlock) {
+
+        // Handle the first block
+        nextBlock.FIELD.forEach((field) => {
+            output[field['@attributes'].name] = field['#text'];
         });
-        return jsonString;
     }
 }

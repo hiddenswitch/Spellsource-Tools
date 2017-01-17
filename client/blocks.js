@@ -172,28 +172,28 @@ Blockly.Blocks['carddesc'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldTextInput("description"), "description");
         this.appendDummyInput()
-            .appendField("HeroClass")
-            .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["DECK_COLLECTION","DECK_COLLECTION"], ["NEUTRAL","NEUTRAL"], ["DRUID","DRUID"], ["HUNTER","HUNTER"], ["MAGE","MAGE"], ["PALADIN","PALADIN"], ["PRIEST","PRIEST"], ["ROGUE","ROGUE"], ["SHAMAN","SHAMAN"], ["WARLOCK","WARLOCK"], ["WARRIOR","WARRIOR"], ["SELF","SELF"], ["OPPONENT","OPPONENT"], ["BOSS","BOSS"]]), "HeroClass");
+            .appendField("heroClass")
+            .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["DECK_COLLECTION","DECK_COLLECTION"], ["NEUTRAL","NEUTRAL"], ["DRUID","DRUID"], ["HUNTER","HUNTER"], ["MAGE","MAGE"], ["PALADIN","PALADIN"], ["PRIEST","PRIEST"], ["ROGUE","ROGUE"], ["SHAMAN","SHAMAN"], ["WARLOCK","WARLOCK"], ["WARRIOR","WARRIOR"], ["SELF","SELF"], ["OPPONENT","OPPONENT"], ["BOSS","BOSS"]]), "heroClass");
         this.appendDummyInput()
-            .appendField("Rarity")
+            .appendField("harity")
             .appendField(new Blockly.FieldDropdown([["FREE","FREE"], ["COMMON","COMMON"], ["RARE","RARE"], ["EPIC","EPIC"], ["LEGENDARY","LEGENDARY"]]), "Rarity");
         this.appendDummyInput()
-            .appendField("CardSet")
+            .appendField("cardSet")
             .appendField(new Blockly.FieldDropdown([["ANY","ANY"], ["BASIC","BASIC"], ["CLASSIC","CLASSIC"], ["REWARD","REWARD"], ["PROMO","PROMO"], ["NAXXRAMAS","MAXXRAMAS"], ["GOBLINS_VS_GNOMES","GOBLINS_VS_GNOMES"], ["BLACKROCK_MOUNTAIN","BLACKROCK_MOUNTAIN"], ["THE_GRAND_TOURNAMENT","THE_GRAND_TOURNAMENT"], ["LEAGUE_OF_EXPLORERS","LEAGUE_OF_EXPLORERS"], ["THE_OLD_GODS","THE_OLD_GODS"], ["ONE_NIGHT_IN_KARAZHAN","ONE_NIGHT_IN_KARAZHAN"], ["MEAN_STREETS_OF_GADGETZHAN","MEAN_STREETS_OF_GADGETZHAN"], ["PROCEDURAL_PREVIEW","PROCEDURAL_PREVIEW"], ["CUSTOM","CUSTOM"]]), "set");
         this.appendDummyInput()
             .appendField("baseManaCost")
             .appendField(new Blockly.FieldTextInput("0"), "baseManaCost");
         this.appendDummyInput()
-            .appendField("Collectible")
+            .appendField("collectible")
             .appendField(new Blockly.FieldCheckbox("TRUE"), "collectible");
         this.appendStatementInput("Attributes")
             .setCheck("Attribute")
-            .appendField("Attributes");
+            .appendField("attributes");
         this.appendDummyInput()
             .appendField("fileFormatVersion")
             .appendField(new Blockly.FieldTextInput("1"), "fileFormatVersion");
         this.appendDummyInput()
-            .appendField("CardType");
+            .appendField("cardType");
         this.setInputsInline(false);
         this.setNextStatement(true, null);
         this.setColour(120);

@@ -55,14 +55,9 @@ Template.cardEditor.onDestroyed(function () {
 Template.cardEditorNavbar.events({
     'click #navbar-button-1': function () {
         var xml = Blockly.Xml.workspaceToDom(workspace);
-        var xmlText = Blockly.Xml.domToPrettyText(xml);
-        var jsonText = JSON.stringify(WorkspaceUtils.xmlToJson(xml));
+        var dictionary = WorkspaceUtils.xmlToDictionary(xml);
 
-        //console.log(xml);
-        //console.log(xmlText);
-        //console.log(jsonText);
-
-        console.log(WorkspaceUtils.workspaceToJSON(workspace));
+        console.log(WorkspaceUtils.workspaceToDictionary(workspace));
     },
     'click #navbar-link-1': function () {
         alert('link clicked');
