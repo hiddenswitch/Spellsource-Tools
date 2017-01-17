@@ -2,6 +2,8 @@
  * Created by bberman on 1/17/17.
  */
 import * as Blockly from 'node-blockly/browser';
+import ParserValueType from '../ParserValueType';
+import HeroClass from '../HeroClass'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
@@ -39,7 +41,7 @@ export default class WorkspaceUtils {
             }
         }
         return obj;
-    };
+    }
 
     static workspaceToDictionary(workspace) {
         const xml = Blockly.Xml.workspaceToDom(workspace);
@@ -86,8 +88,129 @@ export default class WorkspaceUtils {
     }
 
     // TODO: method that constructs blocks from java
-    static blockFromJava()
-    {
+    static blockFromJava(classSpec) {
 
     }
 }
+
+export class ClassSpec {
+    constructor(fields, {name}) {
+        this.fields = fields;
+        this.name = name;
+    }
+
+    toBlock() {
+        let spec = this;
+        return {
+            init: function () {
+                let block = this;
+                block.appendDummyInput()
+                    .appendField(spec.name);
+
+                spec.fields.forEach((field) => {
+                    let input = null;
+
+                    if (field.isStatement()) {
+                        input = block.appendStatementInput(field.key);
+                        let type = ClassSpec.types[field.parserValueType];
+                        input.setCheck(type);
+                        input.appendField(field.key);
+                    } else {
+                        input = block.appendDummyInput();
+                        input.appendField(field.key);
+                        input.appendField(field.getBlocklyField(), field.key);
+                    }
+                });
+
+                block.setPreviousStatement(true, null);
+                block.setInputsInline(false);
+                block.setColour(210);
+                block.setTooltip('');
+                block.setHelpUrl('');
+            }
+        }
+
+    }
+}
+
+ClassSpec.types = {
+    [ParserValueType.SPELL]: 'SpellDesc',
+    [ParserValueType.SPELL_ARRAY]: 'SpellDesc[]',
+    [ParserValueType.CONDITION]: 'ConditionDesc',
+    [ParserValueType.CONDITION_ARRAY]: 'ConditionDesc[]',
+    [ParserValueType.TRIGGER]: 'TriggerDesc',
+    [ParserValueType.EVENT_TRIGGER]: 'EventTriggerDesc',
+    [ParserValueType.CARD_COST_MODIFIER]: '',
+    [ParserValueType.CARD_SOURCE]: '',
+    [ParserValueType.VALUE_PROVIDER]: '',
+    [ParserValueType.ENTITY_FILTER]: '',
+    [ParserValueType.ENTITY_FILTER_ARRAY]: ''
+};
+
+export class FieldSpec {
+    constructor({key, parserValueType, defaultValue = null}) {
+        this.key = key;
+        this.parserValueType = parserValueType;
+        this.defaultValue = defaultValue;
+    }
+
+    isStatement() {
+        return !!FieldSpec.statementValues[this.parserValueType];
+    }
+
+    getBlocklyField() {
+        switch (this.parserValueType) {
+            case ParserValueType.BOOLEAN:
+                const defaultBoolean = _.isUndefined(this.defaultValue) ? 'FALSE' :
+                    (this.defaultValue === true ? 'TRUE' : 'FALSE');
+                return new Blockly.FieldCheckbox(defaultBoolean);
+            case ParserValueType.VALUE:
+            case ParserValueType.INTEGER:
+                return new Blockly.FieldNumber(this.defaultValue.toString());
+            case ParserValueType.TARGET_SELECTION:
+                break;
+            case ParserValueType.TARGET_REFERENCE:
+                break;
+            case ParserValueType.TARGET_PLAYER:
+                break;
+            case ParserValueType.RACE:
+                break;
+            case ParserValueType.ATTRIBUTE:
+                break;
+            case ParserValueType.PLAYER_ATTRIBUTE:
+                break;
+            case ParserValueType.STRING:
+                return new Blockly.FieldTextInput(this.defaultValue);
+            case ParserValueType.STRING_ARRAY:
+                break;
+            case ParserValueType.BOARD_POSITION_RELATIVE:
+                break;
+            case ParserValueType.CARD_LOCATION:
+                break;
+            case ParserValueType.OPERATION:
+                break;
+            case ParserValueType.ALGEBRAIC_OPERATION:
+                break;
+            case ParserValueType.CARD_TYPE:
+                break;
+            case ParserValueType.ENTITY_TYPE:
+                break;
+            case ParserValueType.ACTION_TYPE:
+                break;
+            case ParserValueType.TARGET_TYPE:
+                break;
+            case ParserValueType.RARITY:
+                break;
+            case ParserValueType.HERO_CLASS:
+                return new Blockly.FieldDropdown(HeroClass.toBlocklyArray());
+            case ParserValueType.HERO_CLASS_ARRAY:
+                break;
+            case ParserValueType.CARD_DESC_TYPE:
+                break;
+        }
+    }
+}
+
+FieldSpec.statementValues = {
+    [ParserValueType.SPELL]: true
+};
