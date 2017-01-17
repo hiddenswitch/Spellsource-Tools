@@ -3,7 +3,7 @@
  */
 import * as Blockly from 'node-blockly/browser';
 import {ClassSpec, FieldSpec} from './WorkspaceUtils';
-import ParserValueType from '../ParserValueType';
+import ParserValueType from '../lib/metastone/ParserValueType';
 
 Blockly.Blocks['damagespelldesc'] = {
     init: function () {

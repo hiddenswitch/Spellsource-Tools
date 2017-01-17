@@ -2,21 +2,21 @@
  * Created by bberman on 1/17/17.
  */
 import * as Blockly from 'node-blockly/browser';
-import ParserValueType from '../ParserValueType';
-import HeroClass from '../HeroClass'
-import Rarity from '../Rarity'
-import Race from '../Race'
-import TargetSelection from '../TargetSelection'
-import Attribute from '../Attribute'
-import PlayerAttribute from '../PlayerAttribute'
-import CardLocation from '../CardLocation'
-import Operation from '../Operation'
-import AlgebraicOperation from '../Operation'
-import CardType from '../CardType'
-import EntityType from '../EntityType'
-import ActionType from '../ActionType'
-import TargetType from '../TargetType'
-import CardDescType from '../CardDescType'
+import ParserValueType from '../lib/metastone/ParserValueType';
+import HeroClass from '../lib/metastone/HeroClass'
+import Rarity from '../lib/metastone/Rarity'
+import Race from '../lib/metastone/Race'
+import TargetSelection from '../lib/metastone/TargetSelection'
+import Attribute from '../lib/metastone/Attribute'
+import PlayerAttribute from '../lib/metastone/PlayerAttribute'
+import CardLocation from '../lib/metastone/CardLocation'
+import Operation from '../lib/metastone/Operation'
+import AlgebraicOperation from '../lib/metastone/Operation'
+import CardType from '../lib/metastone/CardType'
+import EntityType from '../lib/metastone/EntityType'
+import ActionType from '../lib/metastone/ActionType'
+import TargetType from '../lib/metastone/TargetType'
+import CardDescType from '../lib/metastone/CardDescType'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
