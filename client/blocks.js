@@ -33,7 +33,7 @@ Blockly.Blocks['battlecrydesc'] = {
             .appendField("spell");
         this.appendDummyInput()
             .appendField("targetSelection")
-            .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["AUTO","AUTO"], ["ANY","ANY"], ["MINIONS","MINIONS"], ["ENEMY_CHARACTERS","ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS","FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS","ENEMY_MINIONS"], ["FRIENDLY_MINIONS","FRIENDLY_MINIONS"], ["HEROES","HEROES"], ["ENEMY_HERO","ENEMY_HERO"], ["FRIENDLY_HERO","FRIENDLY_HERO"]]), "TargetSelection");
+            .appendField(new Blockly.FieldDropdown([["NONE","NONE"], ["AUTO","AUTO"], ["ANY","ANY"], ["MINIONS","MINIONS"], ["ENEMY_CHARACTERS","ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS","FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS","ENEMY_MINIONS"], ["FRIENDLY_MINIONS","FRIENDLY_MINIONS"], ["HEROES","HEROES"], ["ENEMY_HERO","ENEMY_HERO"], ["FRIENDLY_HERO","FRIENDLY_HERO"]]), "targetSelection");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setColour(290);
