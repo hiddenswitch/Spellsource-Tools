@@ -324,6 +324,25 @@ Blockly.Blocks['battlecry'] = {
     }
 }
 
+Blockly.Blocks['charge'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("charge")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "CHARGE");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['HealSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),],
+    {name: 'HealSpell'}
+).toBlock();
+
 Blockly.Blocks['EntityCounter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "EntityCounter"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),],
@@ -333,7 +352,9 @@ Blockly.Blocks['EntityCounter'] = new ClassSpec(
 Blockly.Blocks['buffspell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
-        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
+        new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
     {name: 'buffspell'}
 ).toBlock();
 
