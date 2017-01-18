@@ -47,7 +47,8 @@ Blockly.Blocks['battlecrydesc'] = {
 Blockly.Blocks['minioncarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("CardType: MINION");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("MINION"), "type")
         this.appendDummyInput()
             .appendField("baseAttack")
             .appendField(new Blockly.FieldNumber(0, 0, 10), "baseAttack")
@@ -90,7 +91,8 @@ Blockly.Blocks['minioncarddesc'] = {
 Blockly.Blocks['weaponcarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Type: WEAPON");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("WEAPON"), "type")
         this.appendDummyInput()
             .appendField("damage")
             .appendField(new Blockly.FieldTextInput("0"), "damage");
@@ -163,7 +165,8 @@ Blockly.Blocks['carddesc'] = {
 Blockly.Blocks['herocarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("CardType: HERO");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("HERO"), "type")
         this.appendStatementInput("NAME")
             .setCheck("heropower")
             .appendField("heroPower");
@@ -203,7 +206,8 @@ Blockly.Blocks['spellcarddesc'] = {
 Blockly.Blocks['heropowercarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("CardType: HERO_POWER");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("HERO_POWER"), "type")
         this.appendDummyInput()
             .appendField("options")
             .appendField(new Blockly.FieldTextInput("options"), "options");
@@ -221,7 +225,8 @@ Blockly.Blocks['heropowercarddesc'] = {
 Blockly.Blocks['chooseonecarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("CardType: CHOOSE_ONE");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("CHOOSE_ONE"), "type")
         this.appendDummyInput()
             .appendField("options")
             .appendField(new Blockly.FieldTextInput("options"), "options");
@@ -258,6 +263,40 @@ Blockly.Blocks['damagespelldesc'] = {
         this.setHelpUrl('');
     }
 };
+
+Blockly.Blocks['transformminionspell'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("TransformMinionSpell");
+        this.appendDummyInput()
+            .appendField('class')
+            .appendField(new Blockly.FieldTextInput('TransformMinionSpell'), 'class');
+        this.appendDummyInput()
+            .appendField("target")
+            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
+        this.appendStatementInput("card")
+            .setCheck("card")
+            .appendField("card");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Blocks['taunt'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("taunt")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "TAUNT");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
 
 Blockly.Blocks['test'] = new ClassSpec(
     [new FieldSpec({key: 'baseManaCost', parserValueType: ParserValueType.INTEGER, defaultValue: 3})],

@@ -103,15 +103,43 @@ export default class WorkspaceUtils {
 
     // TODO: method that constructs blocks from java
     static blockFromJava(classSpec) {
-
+        // this.appendDummyInput()
+        //     .appendField("_classname"); // MetaSpell, DamageSpell, etc
+        // this.appendDummyInput()
+        //     .appendField('class')
+        //     .appendField(new Blockly.FieldTextInput('_classname'), 'class');
+        // parse file
+        // for each SpellArg.x
+        // add a blockly statement field
+        //
+        // add new card to cardeditor.html
     }
 
-    // TODO: convert value strings of ints/bools to ints/bools
     // After editor export to JSON, removes quotation marks from expected number field values
-/*    static jsonNumberFields(str)
+    static jsonNumberFields(obj)
     {
-        str.replace(regexp|substr, newSubstr|function);
-    }*/
+        obj.baseManaCost = parseInt(obj.baseManaCost);
+        obj.fileFormatVersion = parseInt(obj.fileFormatVersion);
+        obj.baseManaCost = (obj.baseManaCost == "true");
+        switch(obj.type){
+            case "MINION":
+                obj.baseAttack = parseInt(obj.baseAttack);
+                obj.baseHp = parseInt(obj.baseHp);
+                break;
+            case "WEAPON":
+                obj.damage = parseInt(obj.damage);
+                obj.durability = parseInt(obj.durability);
+                break;
+            case "SPELL":
+                break;
+            case "HERO":
+                break;
+            case "HERO_POWER":
+                break;
+            case "CHOOSE_ONE":
+                break;
+        }
+    }
 }
 
 export class ClassSpec {
