@@ -264,8 +264,8 @@ export class FieldSpec {
 }
 
 FieldSpec.statementValues = {
-    // not obvious how to deal with arrays - statements can only take one input
     [ParserValueType.SPELL]: true,
     [ParserValueType.CONDITION]: true,
-    [ParserValueType.VALUE_PROVIDER]: true
+    [ParserValueType.VALUE_PROVIDER]: true,
+    [ParserValueType.ENTITY_FILTER]: true
 };

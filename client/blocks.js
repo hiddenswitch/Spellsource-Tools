@@ -63,22 +63,22 @@ Blockly.Blocks['minioncarddesc'] = {
             .setCheck("battlecry")
             .appendField("battlecry");
         this.appendStatementInput("spell")
-            .setCheck("spelldesc")
+            .setCheck("spell")
             .appendField("deathrattle");
         this.appendStatementInput("trigger")
-            .setCheck("triggerdesc")
+            .setCheck("trigger")
             .appendField("trigger");
         this.appendStatementInput("triggers")
-            .setCheck("triggerdesc[]")
+            .setCheck("trigger")
             .appendField("triggers");
-        this.appendStatementInput("auradesc")
-            .setCheck("auradesc")
+        this.appendStatementInput("aura")
+            .setCheck("aura")
             .appendField("aura");
         this.appendStatementInput("options")
-            .setCheck("battlecrydesc")
+            .setCheck("battlecry")
             .appendField("options");
         this.appendStatementInput("bothoptions")
-            .setCheck("battlecrydesc")
+            .setCheck("battlecry")
             .appendField("bothOptions");
         this.setInputsInline(false);
         this.setPreviousStatement(true, "carddesc");
@@ -336,6 +336,32 @@ Blockly.Blocks['charge'] = {
         this.setHelpUrl('');
     }
 }
+
+Blockly.Blocks['RaceFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RaceFilter"}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
+    {name: 'RaceFilter'}
+).toBlock();
+
+Blockly.Blocks['BuffAura'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffAura"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: 0})],
+    {name: 'BuffAura'}
+).toBlock();
+
+Blockly.Blocks['DrawCardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DrawCardSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),],
+    {name: 'DrawCardSpell'}
+).toBlock();
+
+Blockly.Blocks['MinionSummonedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionSummonedTrigger"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),],
+    {name: 'MinionSummonedTrigger'}
+).toBlock();
 
 Blockly.Blocks['HealSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
