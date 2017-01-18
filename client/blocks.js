@@ -247,9 +247,9 @@ Blockly.Blocks['damagespelldesc'] = {
         this.appendDummyInput()
             .appendField('class')
             .appendField(new Blockly.FieldTextInput('DamageSpell'), 'class');
-        this.appendDummyInput()
-            .appendField("value")
-            .appendField(new Blockly.FieldTextInput("value"), "value");
+        this.appendStatementInput("value")
+            .setCheck("value")
+            .appendField("value");
         this.appendDummyInput()
             .appendField("target")
             .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
@@ -349,6 +349,26 @@ Blockly.Blocks['enragable'] = {
         this.setHelpUrl('');
     }
 }
+
+Blockly.Blocks['MinionOnBoardCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionOnBoardCondition"}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'MinionOnBoardCondition'}
+).toBlock();
+
+Blockly.Blocks['ConditionalValueProvider'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ConditionalValueProvider"}),
+        new FieldSpec({key: 'ifTrue', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'ifFalse', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'ConditionalValueProvider'}
+).toBlock();
+
+Blockly.Blocks['SetHpSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SetHpSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'SetHpSpell'}
+).toBlock();
 
 Blockly.Blocks['BuffWeaponSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffWeaponSpell"}),
