@@ -245,6 +245,9 @@ Blockly.Blocks['damagespelldesc'] = {
         this.appendDummyInput()
             .appendField("value")
             .appendField(new Blockly.FieldTextInput("value"), "value");
+        this.appendDummyInput()
+            .appendField("target")
+            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
         this.appendStatementInput("filter")
             .setCheck("fiilter")
             .appendField("filter");
