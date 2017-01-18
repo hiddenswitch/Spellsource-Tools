@@ -311,24 +311,31 @@ Blockly.Blocks['frozen'] = {
     }
 }
 
-/*Blockly.Blocks['addattributespell'] = {
-    init: function () {
+Blockly.Blocks['battlecry'] = {
+    init: function() {
         this.appendDummyInput()
-            .appendField("AddAttributeSpell");
-        this.appendDummyInput()
-            .appendField('class')
-            .appendField(new Blockly.FieldTextInput('AddAttributeSpell'), 'class');
-        this.appendDummyInput()
-            .appendField("target")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
-        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})
+            .appendField("battlecry")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "BATTLECRY");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setColour(210);
         this.setTooltip('');
         this.setHelpUrl('');
     }
-};*/
+}
+
+Blockly.Blocks['EntityCounter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "EntityCounter"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),],
+    {name: 'EntityCounter'}
+).toBlock();
+
+Blockly.Blocks['buffspell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'buffspell'}
+).toBlock();
 
 Blockly.Blocks['addattributespell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddAttributeSpell"}),

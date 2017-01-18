@@ -18,6 +18,7 @@ import ActionType from '../lib/metastone/ActionType'
 import TargetType from '../lib/metastone/TargetType'
 import CardDescType from '../lib/metastone/CardDescType'
 import TargetPlayer from '../lib/metastone/TargetPlayer'
+import EntityReference from '../lib/metastone/EntityReference'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
@@ -256,6 +257,8 @@ export class FieldSpec {
                 break;
             case ParserValueType.CARD_DESC_TYPE:
                 return new Blockly.FieldDropdown(CardDescType.toBlocklyArray());
+            case ParserValueType.ENTITY:
+                return new Blockly.FieldDropdown(EntityReference.toBlocklyArray());
         }
     }
 }
@@ -263,5 +266,6 @@ export class FieldSpec {
 FieldSpec.statementValues = {
     // not obvious how to deal with arrays - statements can only take one input
     [ParserValueType.SPELL]: true,
-    [ParserValueType.CONDITION]: true
+    [ParserValueType.CONDITION]: true,
+    [ParserValueType.VALUE_PROVIDER]: true
 };
