@@ -17,6 +17,7 @@ import EntityType from '../lib/metastone/EntityType'
 import ActionType from '../lib/metastone/ActionType'
 import TargetType from '../lib/metastone/TargetType'
 import CardDescType from '../lib/metastone/CardDescType'
+import TargetPlayer from '../lib/metastone/TargetPlayer'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
@@ -185,7 +186,7 @@ export class FieldSpec {
             case ParserValueType.TARGET_REFERENCE:
                 break;
             case ParserValueType.TARGET_PLAYER:
-                break;
+                return new Blockly.FieldDropdown(TargetPlayer.toBlocklyArray());
             case ParserValueType.RACE:
                 return new Blockly.FieldDropdown(Race.toBlocklyArray());
             case ParserValueType.ATTRIBUTE:
@@ -226,5 +227,6 @@ export class FieldSpec {
 
 FieldSpec.statementValues = {
     // spells are the only statement inputs for now
-    [ParserValueType.SPELL]: true
+    [ParserValueType.SPELL]: true,
+    [ParserValueType.CONDITION]: true
 };
