@@ -141,6 +141,15 @@ Blockly.Blocks['carddesc'] = {
             .appendField("fileFormatVersion")
             .appendField(new Blockly.FieldNumber(0, 1, 1), "fileFormatVersion")
         //.appendField(new Blockly.FieldTextInput("1"), "fileFormatVersion");
+        this.appendStatementInput("manaCostModifier")
+            .setCheck("valueprovider")
+            .appendField("manaCostModifier");
+        this.appendStatementInput("passiveTrigger")
+            .setCheck("trigger")
+            .appendField("passiveTrigger");
+        this.appendStatementInput("deckTrigger")
+            .setCheck("trigger")
+            .appendField("deckTrigger");
         this.appendDummyInput()
             .appendField("cardType");
         this.setInputsInline(false);
@@ -257,4 +266,10 @@ Blockly.Blocks['test'] = new ClassSpec(
 Blockly.Blocks['SilenceSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SilenceSpell"})],
     {name: 'SilenceSpell'}
+).toBlock();
+
+Blockly.Blocks['Spell[]'] = new ClassSpec(
+    [new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'Spell[]'}
 ).toBlock();

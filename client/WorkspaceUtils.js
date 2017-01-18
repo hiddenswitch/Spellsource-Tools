@@ -226,7 +226,7 @@ export class FieldSpec {
 }
 
 FieldSpec.statementValues = {
-    // spells are the only statement inputs for now
+    // not obvious how to deal with arrays - statements can only take one input
     [ParserValueType.SPELL]: true,
     [ParserValueType.CONDITION]: true
 };
