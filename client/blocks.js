@@ -337,6 +337,34 @@ Blockly.Blocks['charge'] = {
     }
 }
 
+Blockly.Blocks['enragable'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("enragable")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "ENRAGABLE");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['BuffWeaponSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffWeaponSpell"}),
+        new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'durabilityBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'BuffWeaponSpell'}
+).toBlock();
+
+Blockly.Blocks['EnrageAura'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "EnrageAura"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'applyEffect', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'removeEffect', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'EnrageAura'}
+).toBlock();
+
 Blockly.Blocks['AttributeAura'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeAura"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
