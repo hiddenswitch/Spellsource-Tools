@@ -181,16 +181,17 @@ Blockly.Blocks['herocarddesc'] = {
 Blockly.Blocks['spellcarddesc'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("Spell");
+            .appendField("type")
+            .appendField(new Blockly.FieldTextInput("SPELL"), "type")
         this.appendDummyInput()
             .appendField("TargetSelection")
             .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "targetSelection");
-        this.appendDummyInput()
-            .appendField("SpellDesc")
-            .appendField(new Blockly.FieldTextInput("spell"), "spell");
-        this.appendDummyInput()
-            .appendField("ConditionDesc")
-            .appendField(new Blockly.FieldTextInput("condition"), "condition");
+        this.appendStatementInput("spell")
+            .setCheck("spell")
+            .appendField("spell");
+        this.appendStatementInput("Condition")
+            .setCheck("condition")
+            .appendField("Condition");
         this.setInputsInline(false);
         this.setPreviousStatement(true, ["carddesc", "heropower"]);
         this.setColour(120);
@@ -247,9 +248,6 @@ Blockly.Blocks['damagespelldesc'] = {
         this.appendStatementInput("filter")
             .setCheck("fiilter")
             .appendField("filter");
-        this.appendDummyInput()
-            .appendField("target")
-            .appendField(new Blockly.FieldTextInput("target"), "target");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setColour(210);

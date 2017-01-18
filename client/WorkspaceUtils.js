@@ -105,6 +105,14 @@ export default class WorkspaceUtils {
     static blockFromJava(classSpec) {
 
     }
+
+    // TODO: convert strings of ints/bools to ints/bools
+/*    // After editor export to JSON, removes quotation marks from expected number field values
+    // Also check for true false and remove
+    static jsonNumberFields(str)
+    {
+        str.replace(regexp|"[0-9]", [0-9]|function);
+    }*/
 }
 
 export class ClassSpec {
