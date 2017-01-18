@@ -337,6 +337,14 @@ Blockly.Blocks['charge'] = {
     }
 }
 
+Blockly.Blocks['AttributeAura'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeAura"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'AttributeAura'}
+).toBlock();
+
 Blockly.Blocks['RaceFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RaceFilter"}),
         new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
