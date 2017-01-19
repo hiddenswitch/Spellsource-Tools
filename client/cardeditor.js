@@ -62,8 +62,17 @@ Template.cardEditor.onRendered(function () {
             }
         }
     }
+/*    // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
+    var attributeAdder = function(event) {
+        if(event.type == Blockly.Events.MOVE) {
+            if((event.newInputName) == "battlecry" && workspace.getBlockById(event.blockId).type == "battlecry") {
+                workspace.getBlockById(event.blockId).getParent().getField("battlecry").appendField()
+            }
+        }
+    }*/
 
     workspace.addChangeListener(makeBlockStackable);
+    //workspace.addChangeListener(attributeAdder);
 });
 
 Template.cardEditor.onDestroyed(function () {
