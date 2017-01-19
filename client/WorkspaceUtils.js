@@ -265,7 +265,14 @@ export class FieldSpec {
 
 FieldSpec.statementValues = {
     [ParserValueType.SPELL]: true,
+    [ParserValueType.SPELL_ARRAY]: true,
     [ParserValueType.CONDITION]: true,
+    [ParserValueType.CONDITION_ARRAY]: true,
+    [ParserValueType.TRIGGER]: true,
+    [ParserValueType.EVENT_TRIGGER]: true,
+    [ParserValueType.CARD_COST_MODIFIER]: true,
+    [ParserValueType.CARD_SOURCE]: true,
     [ParserValueType.VALUE_PROVIDER]: true,
-    [ParserValueType.ENTITY_FILTER]: true
+    [ParserValueType.ENTITY_FILTER]: true,
+    [ParserValueType.ENTITY_FILTER_ARRAY]: true
 };

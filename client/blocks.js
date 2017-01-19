@@ -5,27 +5,6 @@ import * as Blockly from 'node-blockly/browser';
 import {ClassSpec, FieldSpec} from './WorkspaceUtils';
 import ParserValueType from '../lib/metastone/ParserValueType';
 
-Blockly.Blocks['damagespelldesc'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("DamageSpellDesc");
-        this.appendValueInput("value")
-            .setCheck("Number")
-            .appendField("value");
-        this.appendValueInput("filter")
-            .setCheck("filter")
-            .appendField("filter");
-        this.appendDummyInput()
-            .appendField("target")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["option", "OPTIONNAME"], ["option", "OPTIONNAME"]]), "target");
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setColour(210);
-        this.setTooltip('');
-        this.setHelpUrl('http://www.example.com/');
-    }
-};
-
 Blockly.Blocks['battlecrydesc'] = {
     init: function () {
         this.appendDummyInput()
@@ -240,29 +219,13 @@ Blockly.Blocks['ChooseOneCard'] = {
     }
 };
 
-Blockly.Blocks['DamageSpell'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("DamageSpell");
-        this.appendDummyInput()
-            .appendField('class')
-            .appendField(new Blockly.FieldTextInput('DamageSpell'), 'class');
-        this.appendDummyInput()
-            .appendField('value')
-            .appendField(new Blockly.FieldNumber(0), 'value');
-        this.appendDummyInput()
-            .appendField("target")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
-        this.appendStatementInput("filter")
-            .setCheck("fiilter")
-            .appendField("filter");
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setColour(210);
-        this.setTooltip('');
-        this.setHelpUrl('');
-    }
-};
+Blockly.Blocks['DamageSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamageSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'DamageSpell'}
+).toBlock();
 
 Blockly.Blocks['transformminionspell'] = {
     init: function () {
@@ -362,6 +325,28 @@ Blockly.Blocks['number'] = {
     }
 }
 
+Blockly.Blocks['DestroySpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DestroySpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'DestroySpell'}
+).toBlock();
+
+Blockly.Blocks['TurnStartTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TurnStartTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'TurnStartTrigger'}
+).toBlock();
+
+Blockly.Blocks['trigger'] = new ClassSpec(
+    [new FieldSpec({key: 'eventTrigger', parserValueType: ParserValueType.EVENT_TRIGGER, defaultValue: null}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'oneTurn', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
+        new FieldSpec({key: 'persistentOwner', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
+        new FieldSpec({key: 'turnDelay', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'trigger'}
+).toBlock();
+
 Blockly.Blocks['MinionCountCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionCountCondition"}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
@@ -376,6 +361,13 @@ Blockly.Blocks['MultiTargetSpell'] = new ClassSpec(
         new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
         new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
     {name: 'MultiTargetSpell'}
+).toBlock();
+
+Blockly.Blocks['DiscardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DiscardSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'DiscardSpell'}
 ).toBlock();
 
 Blockly.Blocks['MinionOnBoardCondition'] = new ClassSpec(
@@ -421,6 +413,11 @@ Blockly.Blocks['AttributeAura'] = new ClassSpec(
     {name: 'AttributeAura'}
 ).toBlock();
 
+Blockly.Blocks['DamagedFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamagedFilter"})],
+    {name: 'DamagedFilter'}
+).toBlock();
+
 Blockly.Blocks['RaceFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RaceFilter"}),
         new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
@@ -458,6 +455,21 @@ Blockly.Blocks['HealSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),],
     {name: 'HealSpell'}
+).toBlock();
+
+Blockly.Blocks['AddSpellTriggerSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddSpellTriggerSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'trigger', parserValueType: ParserValueType.TRIGGER, defaultValue: null})],
+    {name: 'AddSpellTriggerSpell'}
+).toBlock();
+
+Blockly.Blocks['BuffHeroSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffHeroSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'armorBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'BuffHeroSpell'}
 ).toBlock();
 
 Blockly.Blocks['EntityCounter'] = new ClassSpec(
