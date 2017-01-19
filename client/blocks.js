@@ -338,6 +338,23 @@ Blockly.Blocks['SpellDamage'] = {
     }
 }
 
+Blockly.Blocks['InDeckFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "InDeckFilter"})],
+    {name: 'InDeckFilter'}
+).toBlock();
+
+Blockly.Blocks['InHandFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "InHandFilter"})],
+    {name: 'InHandFilter'}
+).toBlock();
+
+Blockly.Blocks['OrFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "OrFilter"}),
+        new FieldSpec({key: 'filters', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'OrFilter'}
+).toBlock();
+
 Blockly.Blocks['PlayerAttributeValueProvider'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "PlayerAttributeValueProvider"}),
         new FieldSpec({key: 'playerAttribute', parserValueType: ParserValueType.PLAYER_ATTRIBUTE, defaultValue: null})],
@@ -415,11 +432,59 @@ Blockly.Blocks['MetaSpell'] = new ClassSpec(
     {name: 'MetaSpell'}
 ).toBlock();
 
+Blockly.Blocks['CardFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardFilter"}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null}),
+        new FieldSpec({key: 'rarity', parserValueType: ParserValueType.RARITY, defaultValue: null}),
+        new FieldSpec({key: 'heroClass', parserValueType: ParserValueType.HERO_CLASS, defaultValue: null}),
+        new FieldSpec({key: 'manaCost', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'CardFilter'}
+).toBlock();
+
+Blockly.Blocks['SpecificCardFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SpecificCardFilter"}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'SpecificCardFilter'}
+).toBlock();
+
+Blockly.Blocks['HighestAttributeFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HighestAttributeFilter"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+    {name: 'HighestAttributeFilter'}
+).toBlock();
+
+Blockly.Blocks['AndFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AndFilter"}),
+        new FieldSpec({key: 'filters', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'AndFilter'}
+).toBlock();
+
+Blockly.Blocks['ShuffleToDeckSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ShuffleToDeckSpell"}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'ShuffleToDeckSpell'}
+).toBlock();
+
 Blockly.Blocks['DestroySpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DestroySpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
         new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
     {name: 'DestroySpell'}
+).toBlock();
+
+Blockly.Blocks['CastRepeatedlySpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CastRepeatedlySpell"}),
+        new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'CastRepeatedlySpell'}
+).toBlock();
+
+Blockly.Blocks['GameStartTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "GameStartTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'GameStartTrigger'}
 ).toBlock();
 
 Blockly.Blocks['TurnStartTrigger'] = new ClassSpec(

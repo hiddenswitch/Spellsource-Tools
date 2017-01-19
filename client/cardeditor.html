@@ -2,20 +2,26 @@
     <div id="blocklyArea"></div>
     <div id="textboxArea"></div>
     <xml id="toolbox" style="display: none">
-        <category name="Card Types">
+        <category name="Card Types"> <!--11-->
             <block type="MinionCard"></block>
             <block type="WeaponCard"></block>
             <block type="ChooseOneCard"></block>
             <block type="HeroCard"></block>
             <block type="SpellCard"></block>
             <block type="HeroPowerCard"></block>
-            <block type="trigger"></block>
-            <block type="Battlecry"></block>
         </category>
-        <category name="Spells">
+        <category name="Spells"> <!--120-->
+            <block type="AddAttributeSpell"></block>
+            <block type="AddDeathrattleSpell"></block>
+            <block type="AddSecretSpell"></block>
             <block type="AddSpellTriggerSpell"></block>
+            <block type="AdjacentEffectSpell"></block>
             <block type="BuffHeroSpell"></block>
+            <block type="BuffSpell"></block>
             <block type="BuffWeaponSpell"></block>
+            <block type="CardCostModifier"></block>
+            <block type="CastRandomSpellSpell"></block>
+            <block type="CastRepeatedlySpell"></block>
             <block type="ConditionalEffectSpell"></block>
             <block type="DamageSpell"></block>
             <block type="DestroySpell"></block>
@@ -24,20 +30,17 @@
             <block type="HealSpell"></block>
             <block type="MetaSpell"></block>
             <block type="MultiTargetSpell"></block>
-            <block type="SilenceSpell"></block>
-            <block type="AddAttributeSpell"></block>
-            <block type="BuffSpell"></block>
-            <block type="TransformMinionSpell"></block>
-            <block type="TemporaryAttackSpell"></block>
-            <block type="AddDeathrattleSpell"></block>
             <block type="ReviveMinionSpell"></block>
-            <block type="AdjacentEffectSpell"></block>
-            <block type="AddSecretSpell"></block>
-            <block type="CardCostModifier"></block>
-            <block type="CastRandomSpellSpell"></block>
-
-
-
+            <block type="SilenceSpell"></block>
+            <block type="TemporaryAttackSpell"></block>
+            <block type="TransformMinionSpell"></block>
+            <block type="ShuffleToDeckSpell"></block>
+            <block type=""></block>
+            <block type=""></block>
+            <block type=""></block>
+            <block type=""></block>
+            <block type=""></block>
+            <block type=""></block>
 
         </category>
         <category name="Attributes">
@@ -48,33 +51,51 @@
             <block type="enragable"></block>
             <block type="SpellDamage"></block>
         </category>
-        <category name="Value Providers">
+        <category name="Value Providers"> <!--12-->
             <block type="EntityCounter"></block>
             <block type="ConditionalValueProvider"></block>
-            <block type="number"></block>
+            <block type="RandomValueProvider"></block>
             <block type="AttributeValueProvider"></block>
+            <block type="AlgebraicValueProvider"></block>
+            <block type="AttributeCounter"></block>
+            <block type="CardCounter"></block>
+            <block type="CardsPlayedValueProvider"></block>
+            <block type="DeadMinionsThisTurn"></block>
+            <block type="HighestAttributeValueProvider"></block>
+            <block type="MinionSummonValueProvider"></block>
             <block type="PlayerAttributeValueProvider"></block>
-
         </category>
-        <category name="Auras">
+        <category name="Auras"> <!--3-->
             <block type="AttributeAura"></block>
             <block type="BuffAura"></block>
             <block type="EnrageAura"></block>
         </category>
-        <category name="Filters">
+        <category name="Filters"> <!--10-->
+            <block type="AndFilter"></block>
             <block type="RaceFilter"></block>
             <block type="AttributeFilter"></block>
             <block type="DamagedFilter"></block>
+            <block type="CardFilter"></block>
+            <block type="SpecificCardFilter"></block>
+            <block type="HighestAttributeFilter"></block>
+            <block type="InDeckFilter"></block>
+            <block type="InHandFilter"></block>
+            <block type="OrFilter"></block>
         </category>
-        <category name="Conditions">
+        <category name="Conditions"> <!--27-->
             <block type="MinionOnBoardCondition"></block>
             <block type="MinionCountCondition"></block>
             <block type="IsDeadCondition"></block>
         </category>
-        <category name="Event Triggers">
+        <category name="Event Triggers"> <!--35-->
             <block type="TurnStartTrigger"></block>
             <block type="TurnEndTrigger"></block>
             <block type="PhysicalAttackTrigger"></block>
+            <block type="GameStartTrigger"></block>
+        </category>
+        <category name="Other">
+            <block type="trigger"></block>
+            <block type="Battlecry"></block>
         </category>
     </xml>
 </template>

@@ -44,6 +44,7 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setDeletable(false);
     //console.log(rootBlock.toString());
 
+    // TODO list: AndFilter, deckTrigger, orFilter
     // Adds and removes more inputs to allow stackable blocks in appropriate locations
     var makeBlockStackable = function(event) {
         if(event.type == Blockly.Events.MOVE) {
