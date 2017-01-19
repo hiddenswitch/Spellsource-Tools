@@ -122,9 +122,9 @@ Blockly.Blocks['carddesc'] = {
             .appendField("fileFormatVersion")
             .appendField(new Blockly.FieldNumber(0, 1, 1), "fileFormatVersion")
         //.appendField(new Blockly.FieldTextInput("1"), "fileFormatVersion");
-        this.appendStatementInput("manaCostModifier")
-            .setCheck("valueprovider")
-            .appendField("manaCostModifier");
+        this.appendStatementInput("cardCostModifier")
+            .setCheck("spell")
+            .appendField("cardCostModifier");
         this.appendStatementInput("passiveTrigger")
             .setCheck("trigger")
             .appendField("passiveTrigger");
@@ -337,6 +337,50 @@ Blockly.Blocks['SpellDamage'] = {
         this.setHelpUrl('');
     }
 }
+
+Blockly.Blocks['PlayerAttributeValueProvider'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "PlayerAttributeValueProvider"}),
+        new FieldSpec({key: 'playerAttribute', parserValueType: ParserValueType.PLAYER_ATTRIBUTE, defaultValue: null})],
+    {name: 'PlayerAttributeValueProvider'}
+).toBlock();
+
+Blockly.Blocks['CastRandomSpellSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CastRandomSpellSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'CastRandomSpellSpell'}
+).toBlock();
+
+Blockly.Blocks['CardCostModifier'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardCostModifier"}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.ALGEBRAIC_OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'requiredAttribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+    {name: 'CardCostModifier'}
+).toBlock();
+
+Blockly.Blocks['AdjacentEffectSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AdjacentEffectSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'spell1', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'spell2', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'AdjacentEffectSpell'}
+).toBlock();
+
+Blockly.Blocks['PhysicalAttackTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "PhysicalAttackTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null})],
+    {name: 'PhysicalAttackTrigger'}
+).toBlock();
+
+Blockly.Blocks['AddSecretSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddSecretSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'secret', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'AddSecretSpell'}
+).toBlock();
 
 Blockly.Blocks['ReviveMinionSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReviveMinionSpell"}),
