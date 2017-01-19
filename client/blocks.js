@@ -5,12 +5,12 @@ import * as Blockly from 'node-blockly/browser';
 import {ClassSpec, FieldSpec} from './WorkspaceUtils';
 import ParserValueType from '../lib/metastone/ParserValueType';
 
-Blockly.Blocks['battlecrydesc'] = {
+Blockly.Blocks['Battlecry'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("BattlecryDesc");
+            .appendField("Battlecry");
         this.appendStatementInput("spell")
-            .setCheck("DamageSpellDesc")
+            .setCheck("DamageSpell")
             .appendField("spell");
         this.appendDummyInput()
             .appendField("targetSelection")
@@ -451,10 +451,25 @@ Blockly.Blocks['MinionSummonedTrigger'] = new ClassSpec(
     {name: 'MinionSummonedTrigger'}
 ).toBlock();
 
+Blockly.Blocks['ConditionalEffectSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ConditionalEffectSpell"}),
+        new FieldSpec({key: 'spell1', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'spell2', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'ConditionalEffectSpell'}
+).toBlock();
+
 Blockly.Blocks['HealSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
-        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),],
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
     {name: 'HealSpell'}
+).toBlock();
+
+Blockly.Blocks['IsDeadCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "IsDeadCondition"})],
+    {name: 'IsDeadCondition'}
 ).toBlock();
 
 Blockly.Blocks['AddSpellTriggerSpell'] = new ClassSpec(
