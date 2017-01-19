@@ -44,7 +44,7 @@ Blockly.Blocks['battlecrydesc'] = {
     }
 };
 
-Blockly.Blocks['minioncarddesc'] = {
+Blockly.Blocks['MinionCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -88,7 +88,7 @@ Blockly.Blocks['minioncarddesc'] = {
     }
 };
 
-Blockly.Blocks['weaponcarddesc'] = {
+Blockly.Blocks['WeaponCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -162,7 +162,7 @@ Blockly.Blocks['carddesc'] = {
     }
 };
 
-Blockly.Blocks['herocarddesc'] = {
+Blockly.Blocks['HeroCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -181,7 +181,7 @@ Blockly.Blocks['herocarddesc'] = {
     }
 };
 
-Blockly.Blocks['spellcarddesc'] = {
+Blockly.Blocks['SpellCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -192,9 +192,9 @@ Blockly.Blocks['spellcarddesc'] = {
         this.appendStatementInput("spell")
             .setCheck("spell")
             .appendField("spell");
-        this.appendStatementInput("Condition")
+        this.appendStatementInput("condition")
             .setCheck("condition")
-            .appendField("Condition");
+            .appendField("condition");
         this.setInputsInline(false);
         this.setPreviousStatement(true, ["carddesc", "heropower"]);
         this.setColour(120);
@@ -203,7 +203,7 @@ Blockly.Blocks['spellcarddesc'] = {
     }
 };
 
-Blockly.Blocks['heropowercarddesc'] = {
+Blockly.Blocks['HeroPowerCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -222,7 +222,7 @@ Blockly.Blocks['heropowercarddesc'] = {
     }
 };
 
-Blockly.Blocks['chooseonecarddesc'] = {
+Blockly.Blocks['ChooseOneCard'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("type")
@@ -240,16 +240,16 @@ Blockly.Blocks['chooseonecarddesc'] = {
     }
 };
 
-Blockly.Blocks['damagespelldesc'] = {
+Blockly.Blocks['DamageSpell'] = {
     init: function () {
         this.appendDummyInput()
-            .appendField("DamageSpellDesc");
+            .appendField("DamageSpell");
         this.appendDummyInput()
             .appendField('class')
             .appendField(new Blockly.FieldTextInput('DamageSpell'), 'class');
-        this.appendStatementInput("value")
-            .setCheck("value")
-            .appendField("value");
+        this.appendDummyInput()
+            .appendField('value')
+            .appendField(new Blockly.FieldNumber(0), 'value');
         this.appendDummyInput()
             .appendField("target")
             .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "target");
@@ -350,6 +350,34 @@ Blockly.Blocks['enragable'] = {
     }
 }
 
+Blockly.Blocks['number'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldNumber(0), "value")
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['MinionCountCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionCountCondition"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0})],
+    {name: 'MinionCountCondition'}
+).toBlock();
+
+Blockly.Blocks['MultiTargetSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MultiTargetSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'MultiTargetSpell'}
+).toBlock();
+
 Blockly.Blocks['MinionOnBoardCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionOnBoardCondition"}),
         new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
@@ -397,6 +425,13 @@ Blockly.Blocks['RaceFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RaceFilter"}),
         new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
     {name: 'RaceFilter'}
+).toBlock();
+
+Blockly.Blocks['AttributeFilter'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeFilter"}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null})],
+    {name: 'AttributeFilter'}
 ).toBlock();
 
 Blockly.Blocks['BuffAura'] = new ClassSpec(
