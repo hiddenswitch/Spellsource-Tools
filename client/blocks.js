@@ -227,7 +227,7 @@ Blockly.Blocks['DamageSpell'] = new ClassSpec(
     {name: 'DamageSpell'}
 ).toBlock();
 
-Blockly.Blocks['transformminionspell'] = {
+Blockly.Blocks['TransformMinionSpell'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("TransformMinionSpell");
@@ -325,8 +325,46 @@ Blockly.Blocks['number'] = {
     }
 }
 
-// Might be possibile during runtime to update spells as they are dropped to have a bottom output so they can be stacked
-// this.SetNextStatement(true, "spell")
+Blockly.Blocks['SpellDamage'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("SpellDamage")
+            .appendField(new Blockly.FieldNumber(0), "SPELL_DAMAGE")
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['ReviveMinionSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReviveMinionSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'hpAdjustment', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'ReviveMinionSpell'}
+).toBlock();
+
+Blockly.Blocks['AddDeathrattleSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddDeathrattleSpell"}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'AddDeathrattleSpell'}
+).toBlock();
+
+Blockly.Blocks['TemporaryAttackSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TemporaryAttackSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'TemporaryAttackSpell'}
+).toBlock();
+
+Blockly.Blocks['AttributeValueProvider'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeValueProvider"}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+    {name: 'AttributeValueProvider'}
+).toBlock();
+
 Blockly.Blocks['MetaSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MetaSpell"}),
         new FieldSpec({key: 'spells', parserValueType: ParserValueType.SPELL, defaultValue: null})],
@@ -344,6 +382,12 @@ Blockly.Blocks['TurnStartTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TurnStartTrigger"}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
     {name: 'TurnStartTrigger'}
+).toBlock();
+
+Blockly.Blocks['TurnEndTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TurnEndTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'TurnEndTrigger'}
 ).toBlock();
 
 Blockly.Blocks['trigger'] = new ClassSpec(
@@ -501,34 +545,23 @@ Blockly.Blocks['EntityCounter'] = new ClassSpec(
     {name: 'EntityCounter'}
 ).toBlock();
 
-Blockly.Blocks['buffspell'] = new ClassSpec(
+Blockly.Blocks['BuffSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BuffSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
         new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
         new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
-    {name: 'buffspell'}
+    {name: 'BuffSpell'}
 ).toBlock();
 
-Blockly.Blocks['addattributespell'] = new ClassSpec(
+Blockly.Blocks['AddAttributeSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddAttributeSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
         new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
     {name: 'AddAttributeSpell'}
 ).toBlock();
 
-Blockly.Blocks['test'] = new ClassSpec(
-    [new FieldSpec({key: 'baseManaCost', parserValueType: ParserValueType.INTEGER, defaultValue: 3})],
-    {name: 'Test'}
-).toBlock();
-
 Blockly.Blocks['SilenceSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SilenceSpell"})],
     {name: 'SilenceSpell'}
-).toBlock();
-
-Blockly.Blocks['Spell[]'] = new ClassSpec(
-    [new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
-        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
-    {name: 'Spell[]'}
 ).toBlock();
