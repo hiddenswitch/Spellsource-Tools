@@ -44,16 +44,20 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setDeletable(false);
     //console.log(rootBlock.toString());
 
-    // TODO: If a spell is added as a statement to MetaSpell, which takes an array of spells,
-    // TODO: give that spell block a bottom output (this.SetNextStatement(true, "spell"))
+    // Adds and removes more inputs to allow stackable blocks in appropriate locations
     var makeBlockStackable = function(event) {
         if(event.type == Blockly.Events.MOVE) {
-            if (event.newInputName == "spells") {
-                let block = workspace.getBlockById(event.blockId);
-                block.setNextStatement(true, "spell");
+            let block = workspace.getBlockById(event.blockId);
+            if (block.getSurroundParent() !== null) {
+                if (block.getSurroundParent().type == "MetaSpell") {
+                    block.setNextStatement(true, "spell");
+                }
             }
             if(workspace.getBlockById(event.oldParentId).type == "MetaSpell") {
-                let block = workspace.getBlockById(event.blockId);
+                block.setNextStatement(false);
+            }
+            if(workspace.getBlockById(event.oldParentId).getSurroundParent().type == "MetaSpell")
+            {
                 block.setNextStatement(false);
             }
         }
