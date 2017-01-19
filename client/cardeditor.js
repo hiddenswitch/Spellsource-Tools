@@ -43,6 +43,17 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
     //console.log(rootBlock.toString());
+
+    // TODO: If a spell is added as a statement to MetaSpell, which takes an array of spells,
+    // TODO: give that spell block a bottom output (this.SetNextStatement(true, "spell"))
+    // var makeBlockStackable = function(event) {
+    //     if(event.type == Blockly.Events.CREATE)
+    //     {
+    //
+    //     }
+    // }
+    //
+    // workspace.addChangeListener(makeBlockStackable);
 });
 
 Template.cardEditor.onDestroyed(function () {

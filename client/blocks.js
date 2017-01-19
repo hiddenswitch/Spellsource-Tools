@@ -325,6 +325,14 @@ Blockly.Blocks['number'] = {
     }
 }
 
+// Might be possibile during runtime to update spells as they are dropped to have a bottom output so they can be stacked
+// this.SetNextStatement(true, "spell")
+Blockly.Blocks['MetaSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MetaSpell"}),
+        new FieldSpec({key: 'spells', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'MetaSpell'}
+).toBlock();
+
 Blockly.Blocks['DestroySpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DestroySpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
