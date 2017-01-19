@@ -248,7 +248,7 @@ Blockly.Blocks['TransformMinionSpell'] = {
     }
 };
 
-Blockly.Blocks['taunt'] = {
+Blockly.Blocks['Taunt'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("taunt")
@@ -261,7 +261,7 @@ Blockly.Blocks['taunt'] = {
     }
 }
 
-Blockly.Blocks['frozen'] = {
+Blockly.Blocks['Frozen'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("frozen")
@@ -274,7 +274,7 @@ Blockly.Blocks['frozen'] = {
     }
 }
 
-Blockly.Blocks['battlecry'] = {
+Blockly.Blocks['Battlecry'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("battlecry")
@@ -287,7 +287,7 @@ Blockly.Blocks['battlecry'] = {
     }
 }
 
-Blockly.Blocks['charge'] = {
+Blockly.Blocks['Charge'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("charge")
@@ -300,7 +300,7 @@ Blockly.Blocks['charge'] = {
     }
 }
 
-Blockly.Blocks['enragable'] = {
+Blockly.Blocks['Enragable'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("enragable")
@@ -442,6 +442,13 @@ Blockly.Blocks['CardFilter'] = new ClassSpec(
     {name: 'CardFilter'}
 ).toBlock();
 
+Blockly.Blocks['DestroyAllExceptOneSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DestroyAllExceptOneSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'DestroyAllExceptOneSpell'}
+).toBlock();
+
 Blockly.Blocks['SpecificCardFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SpecificCardFilter"}),
         new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null})],
@@ -499,13 +506,13 @@ Blockly.Blocks['TurnEndTrigger'] = new ClassSpec(
     {name: 'TurnEndTrigger'}
 ).toBlock();
 
-Blockly.Blocks['trigger'] = new ClassSpec(
+Blockly.Blocks['Trigger'] = new ClassSpec(
     [new FieldSpec({key: 'eventTrigger', parserValueType: ParserValueType.EVENT_TRIGGER, defaultValue: null}),
         new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
         new FieldSpec({key: 'oneTurn', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
         new FieldSpec({key: 'persistentOwner', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
         new FieldSpec({key: 'turnDelay', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
-    {name: 'trigger'}
+    {name: 'Trigger'}
 ).toBlock();
 
 Blockly.Blocks['MinionCountCondition'] = new ClassSpec(
