@@ -5,23 +5,13 @@ import * as Blockly from 'node-blockly/browser';
 import {ClassSpec, FieldSpec} from './WorkspaceUtils';
 import ParserValueType from '../lib/metastone/ParserValueType';
 
-Blockly.Blocks['BattlecryDesc'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Battlecry");
-        this.appendStatementInput("spell")
-            .setCheck("DamageSpell")
-            .appendField("spell");
-        this.appendDummyInput()
-            .appendField("targetSelection")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "targetSelection");
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, "battlecry");
-        this.setColour(290);
-        this.setTooltip('');
-        this.setHelpUrl('');
-    }
-};
+Blockly.Blocks['BattlecryDesc'] = new ClassSpec(
+    [new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'targetSelection', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
+        new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'description', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'BattlecryDesc'}
+).toBlock();
 
 Blockly.Blocks['MinionCard'] = {
     init: function () {
@@ -281,6 +271,19 @@ Blockly.Blocks['Charge'] = {
         this.appendDummyInput()
             .appendField("charge")
             .appendField(new Blockly.FieldCheckbox("TRUE"), "CHARGE");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['DivineShield'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("DivineShield")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "DIVINE_SHIELD");
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setColour(210);
