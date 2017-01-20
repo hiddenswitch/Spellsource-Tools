@@ -63,19 +63,23 @@ Template.cardEditor.onRendered(function () {
             }
         }
     }
-/*    // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
+    // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
         // ComboCondition -> Combo
         // Battlecry -> Battlecry
-    var attributeAdder = function(event) {
+    /*var attributeAdder = function(event) {
         if(event.type == Blockly.Events.MOVE) {
-            if((event.newInputName) == "battlecry" && workspace.getBlockById(event.blockId).type == "battlecry") {
-                workspace.getBlockById(event.blockId).getParent().getField("battlecry").appendField()
+            console.log(workspace.getBlockById(event.blockId).type);
+            if((event.newInputName) == "battlecry" && workspace.getBlockById(event.blockId).type == "BattlecryDesc") {
+                console.log(workspace.getBlockById(event.blockId).getRootBlock().getFieldValue("battlecry"));
+                // get the existing battlecry input and add the existing battlecry attribute block to it, buggy
+                workspace.getBlockById(event.blockId).getRootBlock().getInput("battlecry").appendField(Blockly.Blocks['Battlecry']);
             }
         }
     }*/
 
-    workspace.addChangeListener(makeBlockStackable);
     //workspace.addChangeListener(attributeAdder);
+    workspace.addChangeListener(makeBlockStackable);
+
 });
 
 Template.cardEditor.onDestroyed(function () {

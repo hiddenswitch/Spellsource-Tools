@@ -657,6 +657,16 @@ Blockly.Blocks['GameStartTrigger'] = new ClassSpec(
     {name: 'GameStartTrigger'}
 ).toBlock();
 
+Blockly.Blocks['GameStateChangedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "GameStateChangedTrigger"})],
+    {name: 'GameStateChangedTrigger'}
+).toBlock();
+
+Blockly.Blocks['HealingTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealingTrigger"})],
+    {name: 'HealingTrigger'}
+).toBlock();
+
 Blockly.Blocks['TurnStartTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TurnStartTrigger"}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
