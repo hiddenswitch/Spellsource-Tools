@@ -162,8 +162,7 @@ Blockly.Blocks['SpellCard'] = {
 };
 
 Blockly.Blocks['HeroPowerCard'] = new ClassSpec(
-    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HeroPowerCard"}),
-        new FieldSpec({key: 'targetSelection', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
+    [new FieldSpec({key: 'targetSelection', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
         new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
         new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
         new FieldSpec({key: 'options', parserValueType: ParserValueType.STRING, defaultValue: null}),
@@ -171,23 +170,12 @@ Blockly.Blocks['HeroPowerCard'] = new ClassSpec(
     {name: 'HeroPowerCard'}
 ).toBlock();
 
-Blockly.Blocks['ChooseOneCard'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("type")
-            .appendField(new Blockly.FieldTextInput("CHOOSE_ONE"), "type")
-        this.appendDummyInput()
-            .appendField("options")
-            .appendField(new Blockly.FieldTextInput("options"), "options");
-        this.appendDummyInput()
-            .appendField("bothOptions")
-            .appendField(new Blockly.FieldTextInput("bothOptions"), "bothOptions");
-        this.setPreviousStatement(true, 'carddesc');
-        this.setColour(230);
-        this.setTooltip('');
-        this.setHelpUrl('');
-    }
-};
+Blockly.Blocks['ChooseOneCard'] = new ClassSpec(
+    [new FieldSpec({key: 'targetSelection', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
+        new FieldSpec({key: 'options', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'bothOptions', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'ChooseOneCard'}
+).toBlock();
 
 Blockly.Blocks['DamageSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamageSpell"}),
@@ -859,6 +847,52 @@ Blockly.Blocks['SetHpSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SetHpSpell"}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
     {name: 'SetHpSpell'}
+).toBlock();
+
+Blockly.Blocks['ChangeHeroPowerSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ChangeHeroPowerSpell"}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'ChangeHeroPowerSpell'}
+).toBlock();
+
+Blockly.Blocks['ChangeHeroSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ChangeHeroSpell"}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'ChangeHeroSpell'}
+).toBlock();
+
+Blockly.Blocks['ClearOverloadSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ClearOverloadSpell"})],
+    {name: 'ClearOverloadSpell'}
+).toBlock();
+
+Blockly.Blocks['CloneMinionSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CloneMinionSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'CloneMinionSpell'}
+).toBlock();
+
+Blockly.Blocks['ComboSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ComboSpell"}),
+        new FieldSpec({key: 'exclusive', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
+        new FieldSpec({key: 'spell1', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'spell2', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'ComboSpell'}
+).toBlock();
+
+Blockly.Blocks['ConditionalAttackBonusSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ConditionalAttackBonusSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'ConditionalAttackBonusSpell'}
+).toBlock();
+
+Blockly.Blocks['ConditionalSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ConditionalSpell"}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'ConditionalSpell'}
 ).toBlock();
 
 Blockly.Blocks['BuffWeaponSpell'] = new ClassSpec(
