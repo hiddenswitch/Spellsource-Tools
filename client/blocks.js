@@ -369,6 +369,22 @@ Blockly.Blocks['MAX_HP'] = {
     }
 }
 
+Blockly.Blocks['ArmorGainedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ArmorGainedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'ArmorGainedTrigger'}
+).toBlock();
+
+Blockly.Blocks['AfterSpellCastedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterSpellCastedTrigger"}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'fireCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})],
+    {name: 'AfterSpellCastedTrigger'}
+).toBlock();
+
 Blockly.Blocks['AfterPhysicalAttackTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterPhysicalAttackTrigger"}),
         new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
@@ -546,6 +562,45 @@ Blockly.Blocks['CastRepeatedlySpell'] = new ClassSpec(
         new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
         new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
     {name: 'CastRepeatedlySpell'}
+).toBlock();
+
+Blockly.Blocks['CardPlayedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardPlayedTrigger"}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})
+        new FieldSpec({key: 'requiredAttribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'CardPlayedTrigger'}
+).toBlock();
+
+Blockly.Blocks['CardDrawnTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardDrawnTrigger"}),
+        new FieldSpec({key: 'sourceTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'CardDrawnTrigger'}
+).toBlock();
+
+Blockly.Blocks['BoardChangedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BoardChangedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'BoardChangedTrigger'}
+).toBlock();
+
+Blockly.Blocks['BeforeMinionPlayedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BeforeMinionPlayedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'BeforeMinionPlayedTrigger'}
+).toBlock();
+
+Blockly.Blocks['BeforeMinionSummonedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BeforeMinionSummonedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'BeforeMinionSummonedTrigger'}
 ).toBlock();
 
 Blockly.Blocks['GameStartTrigger'] = new ClassSpec(
