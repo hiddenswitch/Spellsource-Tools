@@ -564,9 +564,57 @@ Blockly.Blocks['CastRepeatedlySpell'] = new ClassSpec(
     {name: 'CastRepeatedlySpell'}
 ).toBlock();
 
+Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DiscardTrigger"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'DiscardTrigger'}
+).toBlock();
+
+Blockly.Blocks['EnrageChangedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "EnrageChangedTrigger"})],
+    {name: 'EnrageChangedTrigger'}
+).toBlock();
+
+Blockly.Blocks['FatalDamageTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "FatalDamageTrigger"}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null})],
+    {name: 'FatalDamageTrigger'}
+).toBlock();
+
+Blockly.Blocks['DamageReceivedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamageReceivedTrigger"}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'fireCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'DamageReceivedTrigger'}
+).toBlock();
+
+Blockly.Blocks['DamageCausedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamageCausedTrigger"}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})],
+    {name: 'DamageCausedTrigger'}
+).toBlock();
+
+Blockly.Blocks['CardReceivedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardReceivedTrigger"}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})],
+    {name: 'CardReceivedTrigger'}
+).toBlock();
+
 Blockly.Blocks['CardPlayedTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardPlayedTrigger"}),
-        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null}),
         new FieldSpec({key: 'requiredAttribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
         new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
@@ -576,7 +624,7 @@ Blockly.Blocks['CardPlayedTrigger'] = new ClassSpec(
 
 Blockly.Blocks['CardDrawnTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardDrawnTrigger"}),
-        new FieldSpec({key: 'sourceTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})
+        new FieldSpec({key: 'sourceTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null}),
         new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
         new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
