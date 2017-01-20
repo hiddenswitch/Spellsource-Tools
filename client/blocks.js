@@ -279,6 +279,19 @@ Blockly.Blocks['Charge'] = {
     }
 }
 
+Blockly.Blocks['Combo'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Combo")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "COMBO");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
 Blockly.Blocks['DivineShield'] = {
     init: function() {
         this.appendDummyInput()
@@ -359,7 +372,7 @@ Blockly.Blocks['MAX_HP'] = {
 Blockly.Blocks['AfterPhysicalAttackTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterPhysicalAttackTrigger"}),
         new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
-        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
         new FieldSpec({key: 'sourceEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
         new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
         new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})],
@@ -589,6 +602,43 @@ Blockly.Blocks['MinionOnBoardCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MinionOnBoardCondition"}),
         new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
     {name: 'MinionOnBoardCondition'}
+).toBlock();
+
+Blockly.Blocks['AddCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddCondition"}),
+        new FieldSpec({key: 'conditions', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'AddCondition'}
+).toBlock();
+
+Blockly.Blocks['AttributeCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeCondition"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0})],
+    {name: 'AttributeCondition'}
+).toBlock();
+
+Blockly.Blocks['CardCountCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardCountCondition"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0})],
+    {name: 'CardCountCondition'}
+).toBlock();
+
+Blockly.Blocks['CardPropertyCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardPropertyCondition"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'CardPropertyCondition'}
+).toBlock();
+
+Blockly.Blocks['ComboCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ComboCondition"})],
+    {name: 'ComboCondition'}
 ).toBlock();
 
 Blockly.Blocks['ConditionalValueProvider'] = new ClassSpec(
