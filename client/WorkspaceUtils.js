@@ -19,6 +19,7 @@ import TargetType from '../lib/metastone/TargetType'
 import CardDescType from '../lib/metastone/CardDescType'
 import TargetPlayer from '../lib/metastone/TargetPlayer'
 import EntityReference from '../lib/metastone/EntityReference'
+import BoardPositionRelative from '../lib/metastone/BoardPositionRelative'
 
 export default class WorkspaceUtils {
     static xmlToDictionary(xml) {
@@ -234,7 +235,7 @@ export class FieldSpec {
             case ParserValueType.STRING_ARRAY:
                 break;
             case ParserValueType.BOARD_POSITION_RELATIVE:
-                break;
+                return new Blockly.FieldDropdown(BoardPositionRelative.toBlocklyArray());
             case ParserValueType.CARD_LOCATION:
                 return new Blockly.FieldDropdown(CardLocation.toBlocklyArray());
             case ParserValueType.OPERATION:

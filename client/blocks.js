@@ -584,6 +584,66 @@ Blockly.Blocks['CastRepeatedlySpell'] = new ClassSpec(
     {name: 'CastRepeatedlySpell'}
 ).toBlock();
 
+Blockly.Blocks['TriggerDeathrattleSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TriggerDeathrattleSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'TriggerDeathrattleSpell'}
+).toBlock();
+
+Blockly.Blocks['TransformToRandomMinionSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TransformToRandomMinionSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'TransformToRandomMinionSpell'}
+).toBlock();
+
+Blockly.Blocks['TransformCardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "TransformCardSpell"}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'TransformCardSpell'}
+).toBlock();
+
+Blockly.Blocks['SwipeSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SwipeSpell"}),
+        new FieldSpec({key: 'secondaryTarget', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'secondaryValue', parserValueType: ParserValueType.VALUE, defaultValue: 0})],
+    {name: 'SwipeSpell'}
+).toBlock();
+
+Blockly.Blocks['SwapHpSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SwapHpSpell"})],
+    {name: 'SwapHpSpell'}
+).toBlock();
+
+Blockly.Blocks['SwapAttackSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SwapAttackSpell"})],
+    {name: 'SwapAttackSpell'}
+).toBlock();
+
+Blockly.Blocks['SwapAttackAndHpSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SwapAttackAndHpSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'SwapAttackAndHpSpell'}
+).toBlock();
+
+Blockly.Blocks['SummonSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SummonSpell"}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'boardPositionRelative', parserValueType: ParserValueType.BOARD_POSITION_RELATIVE, defaultValue: null}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'SummonSpell'}
+).toBlock();
+
+Blockly.Blocks['SummonRandomSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SummonRandomSpell"}),
+        new FieldSpec({key: 'cards', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'boardPositionRelative', parserValueType: ParserValueType.BOARD_POSITION_RELATIVE, defaultValue: null})],
+    {name: 'SummonRandomSpell'}
+).toBlock();
+
 Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DiscardTrigger"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
