@@ -356,6 +356,35 @@ Blockly.Blocks['MAX_HP'] = {
     }
 }
 
+Blockly.Blocks['AfterPhysicalAttackTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterPhysicalAttackTrigger"}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})
+        new FieldSpec({key: 'sourceEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'targetEntityType', parserValueType: ParserValueType.ENTITY_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null})],
+    {name: 'AfterPhysicalAttackTrigger'}
+).toBlock();
+
+Blockly.Blocks['AfterMinionSummonedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterMinionSummonedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'requiredAttribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'hostTargetType', parserValueType: ParserValueType.TARGET_TYPE, defaultValue: null}),
+        new FieldSpec({key: 'fireCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
+    {name: 'AfterMinionSummonedTrigger'}
+).toBlock();
+
+Blockly.Blocks['AfterMinionPlayedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterMinionPlayedTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'requiredAttribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'AfterMinionPlayedTrigger'}
+).toBlock();
+
 Blockly.Blocks['InDeckFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "InDeckFilter"})],
     {name: 'InDeckFilter'}
