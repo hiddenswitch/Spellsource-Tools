@@ -1279,6 +1279,8 @@ Blockly.Blocks['AddAttributeSpell'] = new ClassSpec(
 ).toBlock();
 
 Blockly.Blocks['SilenceSpell'] = new ClassSpec(
-    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SilenceSpell"})],
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SilenceSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
     {name: 'SilenceSpell'}
 ).toBlock();
