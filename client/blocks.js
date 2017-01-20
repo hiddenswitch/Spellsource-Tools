@@ -258,6 +258,19 @@ Blockly.Blocks['Charge'] = {
     }
 }
 
+Blockly.Blocks['Stealth'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("stealth")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "STEALTH");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
 Blockly.Blocks['Combo'] = {
     init: function() {
         this.appendDummyInput()

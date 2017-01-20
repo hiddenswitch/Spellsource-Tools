@@ -66,13 +66,13 @@ Template.cardEditor.onRendered(function () {
     // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
         // ComboCondition -> Combo
         // Battlecry -> Battlecry
-    /*var attributeAdder = function(event) {
+/*    var attributeAdder = function(event) {
         if(event.type == Blockly.Events.MOVE) {
             console.log(workspace.getBlockById(event.blockId).type);
             if((event.newInputName) == "battlecry" && workspace.getBlockById(event.blockId).type == "BattlecryDesc") {
-                console.log(workspace.getBlockById(event.blockId).getRootBlock().getFieldValue("battlecry"));
+                console.log(workspace.getBlockById(event.blockId).getRootBlock().getField("attributes").);
                 // get the existing battlecry input and add the existing battlecry attribute block to it, buggy
-                workspace.getBlockById(event.blockId).getRootBlock().getInput("battlecry").appendField(Blockly.Blocks['Battlecry']);
+                workspace.getBlockById(event.blockId).getRootBlock().getInput("attributes").appendField(Blockly.Blocks['Battlecry']);
             }
         }
     }*/
