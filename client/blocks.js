@@ -416,6 +416,12 @@ Blockly.Blocks['AfterSpellCastedTrigger'] = new ClassSpec(
     {name: 'AfterSpellCastedTrigger'}
 ).toBlock();
 
+Blockly.Blocks['SpellCastedTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SpellCastedTrigger"}),
+        new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'SpellCastedTrigger'}
+).toBlock();
+
 Blockly.Blocks['AfterPhysicalAttackTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AfterPhysicalAttackTrigger"}),
         new FieldSpec({key: 'sourcePlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
@@ -789,6 +795,13 @@ Blockly.Blocks['FatalDamageTrigger'] = new ClassSpec(
     {name: 'FatalDamageTrigger'}
 ).toBlock();
 
+Blockly.Blocks['RandomValueProvider'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RandomValueProvider"}),
+        new FieldSpec({key: 'min', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'max', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'RandomValueProvider'}
+).toBlock();
+
 Blockly.Blocks['DamageReceivedTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DamageReceivedTrigger"}),
         new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
@@ -852,7 +865,8 @@ Blockly.Blocks['BeforeMinionPlayedTrigger'] = new ClassSpec(
 Blockly.Blocks['BeforeMinionSummonedTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "BeforeMinionSummonedTrigger"}),
         new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
-        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+        new FieldSpec({key: 'queueCondition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null})],
     {name: 'BeforeMinionSummonedTrigger'}
 ).toBlock();
 
@@ -1009,6 +1023,12 @@ Blockly.Blocks['GraveyardContainsCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "GraveyardContainsCondition"}),
         new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null})],
     {name: 'GraveyardContainsCondition'}
+).toBlock();
+
+Blockly.Blocks['InspireTrigger'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "InspireTrigger"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'InspireTrigger'}
 ).toBlock();
 
 Blockly.Blocks['GraveyardCountCondition'] = new ClassSpec(
@@ -1242,7 +1262,8 @@ Blockly.Blocks['HealSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
-        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
     {name: 'HealSpell'}
 ).toBlock();
 
@@ -1291,7 +1312,9 @@ Blockly.Blocks['BuffSpell'] = new ClassSpec(
 Blockly.Blocks['AddAttributeSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddAttributeSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
-        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null}),
+        new FieldSpec({key: 'revertTrigger', parserValueType: ParserValueType.TRIGGER, defaultValue: null})],
     {name: 'AddAttributeSpell'}
 ).toBlock();
 
