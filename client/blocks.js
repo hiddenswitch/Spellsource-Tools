@@ -650,6 +650,51 @@ Blockly.Blocks['SummonRandomNotOnBoardSpell'] = new ClassSpec(
     {name: 'SummonRandomNotOnBoardSpell'}
 ).toBlock();
 
+Blockly.Blocks['SetHpSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SetHpSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'SetHpSpell'}
+).toBlock();
+
+Blockly.Blocks['SetHeroHpSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SetHeroHpSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'SetHeroHpSpell'}
+).toBlock();
+
+Blockly.Blocks['SetAttackSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SetAttackSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'SetAttackSpell'}
+).toBlock();
+
+Blockly.Blocks['ReviveMinionSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReviveMinionSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
+        new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'ReviveMinionSpell'}
+).toBlock();
+
+Blockly.Blocks['MultiTargetSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MultiTargetSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'MultiTargetSpell'}
+).toBlock();
+
+Blockly.Blocks['MissilesSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MissilesSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
+        new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: null}),
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: true})],
+    {name: 'MissilesSpell'}
+).toBlock();
+
 Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DiscardTrigger"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
