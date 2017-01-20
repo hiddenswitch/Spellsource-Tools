@@ -641,6 +641,87 @@ Blockly.Blocks['ComboCondition'] = new ClassSpec(
     {name: 'ComboCondition'}
 ).toBlock();
 
+Blockly.Blocks['ComparisonCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ComparisonCondition"}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value1', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
+        new FieldSpec({key: 'value2', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
+    {name: 'ComparisonCondition'}
+).toBlock();
+
+Blockly.Blocks['ControlsSecretCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ControlsSecretCondition"})],
+    {name: 'ControlsSecretCondition'}
+).toBlock();
+
+Blockly.Blocks['DeckContainsCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DeckContainsCondition"}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'DeckContainsCondition'}
+).toBlock();
+
+Blockly.Blocks['GraveyardContainsCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "GraveyardContainsCondition"}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'GraveyardContainsCondition'}
+).toBlock();
+
+Blockly.Blocks['GraveyardCountCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "GraveyardCountCondition"}),
+        new FieldSpec({key: 'operation', parserValueType: ParserValueType.OPERATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0})],
+    {name: 'GraveyardCountCondition'}
+).toBlock();
+
+Blockly.Blocks['HasAttackedCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HasAttackedCondition"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'HasAttackedCondition'}
+).toBlock();
+
+Blockly.Blocks['HasEntitiesOnBoardCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HasEntitiesOnBoardCondition"}),
+        new FieldSpec({key: 'cardIds', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'HasEntitiesOnBoardCondition'}
+).toBlock();
+
+Blockly.Blocks['HasEntityCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HasEntityCondition"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'HasEntityCondition'}
+).toBlock();
+
+Blockly.Blocks['HasHeroPowerCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HasHeroPowerCondition"}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'HasHeroPowerCondition'}
+).toBlock();
+
+Blockly.Blocks['HasWeaponCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HasWeaponCondition"}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'HasWeaponCondition'}
+).toBlock();
+
+Blockly.Blocks['HighlanderDeckCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HighlanderDeckCondition"})],
+    {name: 'HighlanderDeckCondition'}
+).toBlock();
+
+Blockly.Blocks['HoldsCardCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HoldsCardCondition"}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'HoldsCardCondition'}
+).toBlock();
+
+Blockly.Blocks['IsDamagedCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "IsDamagedCondition"})],
+    {name: 'IsDamagedCondition'}
+).toBlock();
+
 Blockly.Blocks['ConditionalValueProvider'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ConditionalValueProvider"}),
         new FieldSpec({key: 'ifTrue', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
@@ -733,9 +814,12 @@ Blockly.Blocks['HealSpell'] = new ClassSpec(
 ).toBlock();
 
 Blockly.Blocks['IsDeadCondition'] = new ClassSpec(
-    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "IsDeadCondition"})],
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "IsDeadCondition"}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
     {name: 'IsDeadCondition'}
 ).toBlock();
+
+
 
 Blockly.Blocks['AddSpellTriggerSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddSpellTriggerSpell"}),
