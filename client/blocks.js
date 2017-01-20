@@ -604,6 +604,18 @@ Blockly.Blocks['MinionOnBoardCondition'] = new ClassSpec(
     {name: 'MinionOnBoardCondition'}
 ).toBlock();
 
+Blockly.Blocks['OrCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "OrCondition"}),
+        new FieldSpec({key: 'conditions', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
+    {name: 'OrCondition'}
+).toBlock();
+
+Blockly.Blocks['OwnedByPlayerCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "OwnedByPlayerCondition"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'OwnedByPlayerCondition'}
+).toBlock();
+
 Blockly.Blocks['AddCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddCondition"}),
         new FieldSpec({key: 'conditions', parserValueType: ParserValueType.CONDITION, defaultValue: null})],
@@ -639,6 +651,13 @@ Blockly.Blocks['CardPropertyCondition'] = new ClassSpec(
 Blockly.Blocks['ComboCondition'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ComboCondition"})],
     {name: 'ComboCondition'}
+).toBlock();
+
+Blockly.Blocks['RaceCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RaceCondition"}),
+        new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null}),
+        new FieldSpec({key: 'invert', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
+    {name: 'RaceCondition'}
 ).toBlock();
 
 Blockly.Blocks['ComparisonCondition'] = new ClassSpec(
@@ -819,7 +838,10 @@ Blockly.Blocks['IsDeadCondition'] = new ClassSpec(
     {name: 'IsDeadCondition'}
 ).toBlock();
 
-
+Blockly.Blocks['RandomCondition'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RandomCondition"})],
+    {name: 'RandomCondition'}
+).toBlock();
 
 Blockly.Blocks['AddSpellTriggerSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AddSpellTriggerSpell"}),
