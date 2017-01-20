@@ -498,7 +498,8 @@ Blockly.Blocks['TemporaryAttackSpell'] = new ClassSpec(
 
 Blockly.Blocks['AttributeValueProvider'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "AttributeValueProvider"}),
-        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
     {name: 'AttributeValueProvider'}
 ).toBlock();
 
@@ -510,11 +511,12 @@ Blockly.Blocks['MetaSpell'] = new ClassSpec(
 
 Blockly.Blocks['CardFilter'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CardFilter"}),
+        new FieldSpec({key: 'cardId', parserValueType: ParserValueType.STRING, defaultValue: null}),
         new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
         new FieldSpec({key: 'race', parserValueType: ParserValueType.RACE, defaultValue: null}),
         new FieldSpec({key: 'rarity', parserValueType: ParserValueType.RARITY, defaultValue: null}),
         new FieldSpec({key: 'heroClass', parserValueType: ParserValueType.HERO_CLASS, defaultValue: null}),
-        new FieldSpec({key: 'manaCost', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+        new FieldSpec({key: 'manaCost', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null})],
     {name: 'CardFilter'}
 ).toBlock();
 
