@@ -690,9 +690,22 @@ Blockly.Blocks['MissilesSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MissilesSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
-        new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: null}),
+        new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
         new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: true})],
     {name: 'MissilesSpell'}
+).toBlock();
+
+Blockly.Blocks['PutRandomSecretIntoPlaySpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "PutRandomSecretIntoPlaySpell"}),
+        new FieldSpec({key: 'howMany', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+    {name: 'PutRandomSecretIntoPlaySpell'}
+).toBlock();
+
+Blockly.Blocks['RecastSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RecastSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'RecastSpell'}
 ).toBlock();
 
 Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
