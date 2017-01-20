@@ -5,7 +5,7 @@ import * as Blockly from 'node-blockly/browser';
 import {ClassSpec, FieldSpec} from './WorkspaceUtils';
 import ParserValueType from '../lib/metastone/ParserValueType';
 
-Blockly.Blocks['Battlecry'] = {
+Blockly.Blocks['BattlecryDesc'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Battlecry");
@@ -16,7 +16,7 @@ Blockly.Blocks['Battlecry'] = {
             .appendField("targetSelection")
             .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["AUTO", "AUTO"], ["ANY", "ANY"], ["MINIONS", "MINIONS"], ["ENEMY_CHARACTERS", "ENEMY_CHARACTERS"], ["FRIENDLY_CHARACTERS", "FRIENDLY_CHARACTERS"], ["ENEMY_MINIONS", "ENEMY_MINIONS"], ["FRIENDLY_MINIONS", "FRIENDLY_MINIONS"], ["HEROES", "HEROES"], ["ENEMY_HERO", "ENEMY_HERO"], ["FRIENDLY_HERO", "FRIENDLY_HERO"]]), "targetSelection");
         this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
+        this.setPreviousStatement(true, "battlecry");
         this.setColour(290);
         this.setTooltip('');
         this.setHelpUrl('');
@@ -60,7 +60,7 @@ Blockly.Blocks['MinionCard'] = {
             .setCheck("battlecry")
             .appendField("bothOptions");
         this.setInputsInline(false);
-        this.setPreviousStatement(true, "carddesc");
+        this.setPreviousStatement(true, 'carddesc');
         this.setColour(120);
         this.setTooltip('');
         this.setHelpUrl('');
@@ -85,7 +85,7 @@ Blockly.Blocks['WeaponCard'] = {
             .setCheck("SpellDesc")
             .appendField("onUnequip");
         this.setInputsInline(false);
-        this.setPreviousStatement(true, "carddesc");
+        this.setPreviousStatement(true, 'carddesc');
         this.setColour(120);
         this.setTooltip('');
         this.setHelpUrl('http://www.example.com/');
@@ -134,31 +134,20 @@ Blockly.Blocks['carddesc'] = {
         this.appendDummyInput()
             .appendField("cardType");
         this.setInputsInline(false);
-        this.setNextStatement(true, null);
+        this.setNextStatement(true);
         this.setColour(120);
         this.setTooltip('');
         this.setHelpUrl('');
     }
 };
 
-Blockly.Blocks['HeroCard'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("type")
-            .appendField(new Blockly.FieldTextInput("HERO"), "type")
-        this.appendStatementInput("NAME")
-            .setCheck("heropower")
-            .appendField("heroPower");
-        this.appendDummyInput();
-        this.appendDummyInput()
-            .appendField("Race")
-            .appendField(new Blockly.FieldDropdown([["NONE", "NONE"], ["BEAST", "BEAST"], ["MURLOC", "MURLOC"], ["PIRATE", "PIRATE"], ["DEMON", "DEMON"], ["DRAGON", "DRAGON"], ["TOTEM", "TOTEM"], ["MECH", "MECH"]]), "Race");
-        this.setPreviousStatement(true, null);
-        this.setColour(230);
-        this.setTooltip('');
-        this.setHelpUrl('');
-    }
-};
+Blockly.Blocks['HeroCard'] = new ClassSpec(
+    [new FieldSpec({key: 'type', parserValueType: ParserValueType.STRING, defaultValue: "HERO"}),
+        new FieldSpec({key: 'heroClass', parserValueType: ParserValueType.HERO_CLASS, defaultValue: null}),
+        new FieldSpec({key: 'heroPower', parserValueType: ParserValueType.CARD_SOURCE, defaultValue: null}),
+        new FieldSpec({key: 'weapon', parserValueType: ParserValueType.CARD_SOURCE, defaultValue: null})],
+    {name: 'HeroCard'}
+).toBlock();
 
 Blockly.Blocks['SpellCard'] = {
     init: function () {
@@ -193,7 +182,7 @@ Blockly.Blocks['HeroPowerCard'] = {
         this.appendDummyInput()
             .appendField("bothOptions")
             .appendField(new Blockly.FieldTextInput("bothOptions"), "bothOptions");
-        this.setPreviousStatement(true, null);
+        this.setPreviousStatement(true, 'carddesc');
         this.setNextStatement(true, null);
         this.setColour(230);
         this.setTooltip('');
@@ -212,7 +201,7 @@ Blockly.Blocks['ChooseOneCard'] = {
         this.appendDummyInput()
             .appendField("bothOptions")
             .appendField(new Blockly.FieldTextInput("bothOptions"), "bothOptions");
-        this.setPreviousStatement(true, null);
+        this.setPreviousStatement(true, 'carddesc');
         this.setColour(230);
         this.setTooltip('');
         this.setHelpUrl('');
@@ -330,6 +319,32 @@ Blockly.Blocks['SpellDamage'] = {
         this.appendDummyInput()
             .appendField("SpellDamage")
             .appendField(new Blockly.FieldNumber(0), "SPELL_DAMAGE")
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['HP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("HP")
+            .appendField(new Blockly.FieldNumber(0), "HP")
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['MAX_HP'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("MAX_HP")
+            .appendField(new Blockly.FieldNumber(0), "MAX_HP")
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setColour(210);
