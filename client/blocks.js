@@ -992,9 +992,18 @@ Blockly.Blocks['CreateCardSpell'] = new ClassSpec(
         new FieldSpec({key: 'description', parserValueType: ParserValueType.STRING, defaultValue: null}),
         new FieldSpec({key: 'cardType', parserValueType: ParserValueType.CARD_TYPE, defaultValue: null}),
         new FieldSpec({key: 'mana', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
-        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
-    ],
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
     {name: 'CreateCardSpell'}
+).toBlock();
+
+Blockly.Blocks['CreateSummonSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CreateSummonSpell"}),
+        new FieldSpec({key: 'name', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'mana', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'CreateSummonSpell'}
 ).toBlock();
 
 Blockly.Blocks['HealSpell'] = new ClassSpec(
