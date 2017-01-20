@@ -258,6 +258,32 @@ Blockly.Blocks['Charge'] = {
     }
 }
 
+Blockly.Blocks['UntargetableBySpells'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("untargetableBySpells")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "UNTARGETABLE_BY_SPELLS");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
+Blockly.Blocks['Deathrattles'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("deathrattles")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "DEATHRATTLES");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
 Blockly.Blocks['Stealth'] = {
     init: function() {
         this.appendDummyInput()
