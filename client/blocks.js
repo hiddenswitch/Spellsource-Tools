@@ -644,6 +644,12 @@ Blockly.Blocks['SummonRandomSpell'] = new ClassSpec(
     {name: 'SummonRandomSpell'}
 ).toBlock();
 
+Blockly.Blocks['SummonRandomNotOnBoardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "SummonRandomNotOnBoardSpell"}),
+        new FieldSpec({key: 'cards', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'SummonRandomNotOnBoardSpell'}
+).toBlock();
+
 Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "DiscardTrigger"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
