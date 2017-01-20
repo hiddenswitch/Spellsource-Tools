@@ -258,6 +258,19 @@ Blockly.Blocks['Charge'] = {
     }
 }
 
+Blockly.Blocks['DoubleDeathrattles'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("doubleDeathrattles")
+            .appendField(new Blockly.FieldCheckbox("TRUE"), "DOUBLE_DEATHRATTLES");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setColour(210);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
+}
+
 Blockly.Blocks['UntargetableBySpells'] = {
     init: function() {
         this.appendDummyInput()
@@ -684,6 +697,14 @@ Blockly.Blocks['MultiTargetSpell'] = new ClassSpec(
         new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
         new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
     {name: 'MultiTargetSpell'}
+).toBlock();
+
+Blockly.Blocks['ReturnMinionToHandSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReturnMinionToHandSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null})],
+    {name: 'ReturnMinionToHandSpell'}
 ).toBlock();
 
 Blockly.Blocks['MissilesSpell'] = new ClassSpec(
@@ -1236,7 +1257,8 @@ Blockly.Blocks['BuffSpell'] = new ClassSpec(
         new FieldSpec({key: 'target', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE_PROVIDER, defaultValue: null}),
         new FieldSpec({key: 'attackBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
-        new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0})],
+        new FieldSpec({key: 'hpBonus', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
+        new FieldSpec({key: 'randomTarget', parserValueType: ParserValueType.BOOLEAN, defaultValue: false})],
     {name: 'BuffSpell'}
 ).toBlock();
 
