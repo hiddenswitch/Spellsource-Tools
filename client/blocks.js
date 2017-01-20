@@ -161,24 +161,15 @@ Blockly.Blocks['SpellCard'] = {
     }
 };
 
-Blockly.Blocks['HeroPowerCard'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("type")
-            .appendField(new Blockly.FieldTextInput("HERO_POWER"), "type")
-        this.appendDummyInput()
-            .appendField("options")
-            .appendField(new Blockly.FieldTextInput("options"), "options");
-        this.appendDummyInput()
-            .appendField("bothOptions")
-            .appendField(new Blockly.FieldTextInput("bothOptions"), "bothOptions");
-        this.setPreviousStatement(true, 'carddesc');
-        this.setNextStatement(true, null);
-        this.setColour(230);
-        this.setTooltip('');
-        this.setHelpUrl('');
-    }
-};
+Blockly.Blocks['HeroPowerCard'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HeroPowerCard"}),
+        new FieldSpec({key: 'targetSelection', parserValueType: ParserValueType.TARGET_SELECTION, defaultValue: null}),
+        new FieldSpec({key: 'spell', parserValueType: ParserValueType.SPELL, defaultValue: null}),
+        new FieldSpec({key: 'condition', parserValueType: ParserValueType.CONDITION, defaultValue: null}),
+        new FieldSpec({key: 'options', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'bothOptions', parserValueType: ParserValueType.STRING, defaultValue: null})],
+    {name: 'HeroPowerCard'}
+).toBlock();
 
 Blockly.Blocks['ChooseOneCard'] = {
     init: function () {

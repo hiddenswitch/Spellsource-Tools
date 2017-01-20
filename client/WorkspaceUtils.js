@@ -274,5 +274,6 @@ FieldSpec.statementValues = {
     [ParserValueType.CARD_SOURCE]: true,
     [ParserValueType.VALUE_PROVIDER]: true,
     [ParserValueType.ENTITY_FILTER]: true,
-    [ParserValueType.ENTITY_FILTER_ARRAY]: true
+    [ParserValueType.ENTITY_FILTER_ARRAY]: true,
+    [ParserValueType.STRING_ARRAY]: true
 };
