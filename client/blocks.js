@@ -964,6 +964,27 @@ Blockly.Blocks['ConditionalEffectSpell'] = new ClassSpec(
     {name: 'ConditionalEffectSpell'}
 ).toBlock();
 
+Blockly.Blocks['CopyCardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CopyCardSpell"}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'cardLocation', parserValueType: ParserValueType.CARD_LOCATION, defaultValue: null}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.TARGET_PLAYER, defaultValue: null})],
+    {name: 'CopyCardSpell'}
+).toBlock();
+
+Blockly.Blocks['CopyDeathrattleSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CopyDeathrattleSpell"}),
+        new FieldSpec({key: 'filter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'CopyDeathrattleSpell'}
+).toBlock();
+
+Blockly.Blocks['CopyHeroPower'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "CopyHeroPower"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'CopyHeroPower'}
+).toBlock();
+
 Blockly.Blocks['HealSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "HealSpell"}),
         new FieldSpec({key: 'value', parserValueType: ParserValueType.INTEGER, defaultValue: 0}),
