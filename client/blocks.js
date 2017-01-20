@@ -703,9 +703,31 @@ Blockly.Blocks['PutRandomSecretIntoPlaySpell'] = new ClassSpec(
 
 Blockly.Blocks['RecastSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RecastSpell"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'RecastSpell'}
+).toBlock();
+
+Blockly.Blocks['ReceiveCardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReceiveCardSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
         new FieldSpec({key: 'card', parserValueType: ParserValueType.STRING, defaultValue: null})],
-    {name: 'RecastSpell'}
+    {name: 'ReceiveCardSpell'}
+).toBlock();
+
+Blockly.Blocks['MisdirectSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "MisdirectSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null})],
+    {name: 'MisdirectSpell'}
+).toBlock();
+
+Blockly.Blocks['RemoveAttributeSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "RemoveAttributeSpell"}),
+        new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'attribute', parserValueType: ParserValueType.ATTRIBUTE, defaultValue: null})],
+    {name: 'RemoveAttributeSpell'}
 ).toBlock();
 
 Blockly.Blocks['DiscardTrigger'] = new ClassSpec(
