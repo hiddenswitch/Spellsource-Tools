@@ -731,6 +731,15 @@ Blockly.Blocks['RecastSpell'] = new ClassSpec(
     {name: 'RecastSpell'}
 ).toBlock();
 
+Blockly.Blocks['PutRandomMinionOnBoardSpell'] = new ClassSpec(
+    [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "PutRandomMinionOnBoardSpell"}),
+        new FieldSpec({key: 'targetPlayer', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
+        new FieldSpec({key: 'cardLocation', parserValueType: ParserValueType.CARD_LOCATION, defaultValue: null}),
+        new FieldSpec({key: 'value', parserValueType: ParserValueType.VALUE, defaultValue: 0}),
+        new FieldSpec({key: 'cardFilter', parserValueType: ParserValueType.ENTITY_FILTER, defaultValue: null})],
+    {name: 'PutRandomMinionOnBoardSpell'}
+).toBlock();
+
 Blockly.Blocks['ReceiveCardSpell'] = new ClassSpec(
     [new FieldSpec({key: 'class', parserValueType: ParserValueType.STRING, defaultValue: "ReceiveCardSpell"}),
         new FieldSpec({key: 'target', parserValueType: ParserValueType.ENTITY, defaultValue: null}),
