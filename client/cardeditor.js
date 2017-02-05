@@ -45,24 +45,24 @@ Template.cardEditor.onRendered(function () {
     //console.log(rootBlock.toString());
 
     // TODO list: AndFilter, deckTrigger, orFilter, createCardSpell
-    // Adds and removes more inputs to allow stackable blocks in appropriate locations
-    var makeBlockStackable = function(event) {
-        if(event.type == Blockly.Events.MOVE) {
-            let block = workspace.getBlockById(event.blockId);
-            if (block.getSurroundParent() !== null) {
-                if (block.getSurroundParent().type == "MetaSpell") {
-                    block.setNextStatement(true, "spell");
-                }
-            }
-            if(workspace.getBlockById(event.oldParentId).type == "MetaSpell") {
-                block.setNextStatement(false);
-            }
-            if(workspace.getBlockById(event.oldParentId).getSurroundParent().type == "MetaSpell")
-            {
-                block.setNextStatement(false);
-            }
-        }
-    }
+    // // Adds and removes more inputs to allow stackable blocks in appropriate locations
+    // var makeBlockStackable = function(event) {
+    //     if(event.type == Blockly.Events.MOVE) {
+    //         let block = workspace.getBlockById(event.blockId);
+    //         if (block.getSurroundParent() !== null) {
+    //             if (block.getSurroundParent().type == "MetaSpell") {
+    //                 block.setNextStatement(true, "spell");
+    //             }
+    //         }
+    //         if(workspace.getBlockById(event.oldParentId).type == "MetaSpell") {
+    //             block.setNextStatement(false);
+    //         }
+    //         if(workspace.getBlockById(event.oldParentId).getSurroundParent().type == "MetaSpell")
+    //         {
+    //             block.setNextStatement(false);
+    //         }
+    //     }
+    // }
     // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
         // ComboCondition -> Combo
         // Battlecry -> Battlecry
@@ -79,7 +79,7 @@ Template.cardEditor.onRendered(function () {
     }*/
 
     //workspace.addChangeListener(attributeAdder);
-    workspace.addChangeListener(makeBlockStackable);
+    // workspace.addChangeListener(makeBlockStackable);
 
 });
 
