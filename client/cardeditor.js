@@ -1,12 +1,19 @@
 import * as Blockly from 'node-blockly/browser';
 import {Template} from 'meteor/templating';
 import WorkspaceUtils from './WorkspaceUtils';
+import {Tracker} from 'meteor/tracker';
 
 // TODO: Look at https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gj4w2c for inspiration for blocks
 
 var workspace = null;
 
+Template.cardEditor.onCreated(function () {
+    let instance = Template.instance();
+    instance.codeDependency = new Tracker.Dependency();
+});
+
 Template.cardEditor.onRendered(function () {
+
     if (workspace !== null) {
         throw new Meteor.Error('There can only be 1 Blockly workspace at a time.');
     }
@@ -17,6 +24,7 @@ Template.cardEditor.onRendered(function () {
     var blocklyDiv = document.getElementById('blocklyDiv');
     workspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
+
     var onresize = function (e) {
         // Compute the absolute coordinates and dimensions of blocklyArea.
         var element = blocklyArea;
@@ -33,53 +41,24 @@ Template.cardEditor.onRendered(function () {
         blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
         blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
     };
+
+    // Set up resize handlers
     window.addEventListener('resize', onresize, false);
     onresize();
     Blockly.svgResize(workspace);
 
+    // Create a default block
     var rootBlock = workspace.newBlock('carddesc');
     rootBlock.initSvg();
     rootBlock.render();
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
-    //console.log(rootBlock.toString());
 
-    // TODO list: AndFilter, deckTrigger, orFilter, createCardSpell
-    // // Adds and removes more inputs to allow stackable blocks in appropriate locations
-    // var makeBlockStackable = function(event) {
-    //     if(event.type == Blockly.Events.MOVE) {
-    //         let block = workspace.getBlockById(event.blockId);
-    //         if (block.getSurroundParent() !== null) {
-    //             if (block.getSurroundParent().type == "MetaSpell") {
-    //                 block.setNextStatement(true, "spell");
-    //             }
-    //         }
-    //         if(workspace.getBlockById(event.oldParentId).type == "MetaSpell") {
-    //             block.setNextStatement(false);
-    //         }
-    //         if(workspace.getBlockById(event.oldParentId).getSurroundParent().type == "MetaSpell")
-    //         {
-    //             block.setNextStatement(false);
-    //         }
-    //     }
-    // }
-    // TODO: When battlecries, etc added, need to automatically add attribute checkbox for it
-        // ComboCondition -> Combo
-        // Battlecry -> Battlecry
-        // Deathrattle
-/*    var attributeAdder = function(event) {
-        if(event.type == Blockly.Events.MOVE) {
-            console.log(workspace.getBlockById(event.blockId).type);
-            if((event.newInputName) == "battlecry" && workspace.getBlockById(event.blockId).type == "BattlecryDesc") {
-                console.log(workspace.getBlockById(event.blockId).getRootBlock().getField("attributes").);
-                // get the existing battlecry input and add the existing battlecry attribute block to it, buggy
-                workspace.getBlockById(event.blockId).getRootBlock().getInput("attributes").appendField(Blockly.Blocks['Battlecry']);
-            }
-        }
-    }*/
-
-    //workspace.addChangeListener(attributeAdder);
-    // workspace.addChangeListener(makeBlockStackable);
+    var instance = Template.instance();
+    // Configure a change listener to update the code text
+    workspace.addChangeListener(() => {
+        instance.codeDependency.changed();
+    });
 
 });
 
@@ -90,15 +69,19 @@ Template.cardEditor.onDestroyed(function () {
     }
 });
 
-Template.cardEditorNavbar.events({
-    'click #navbar-button-1': function () {
+Template.cardEditor.helpers({
+    blocklyCode() {
+        let instance = Template.instance();
+        instance.codeDependency.depend();
+
+        if (workspace == null) {
+            return;
+        }
+
         var xml = Blockly.Xml.workspaceToDom(workspace);
         var dictionary = WorkspaceUtils.xmlToDictionary(xml);
 
-        console.log(WorkspaceUtils.workspaceToDictionary(workspace));
-    },
-    'click #navbar-link-1': function () {
-        alert('link clicked');
+        return JSON.stringify(WorkspaceUtils.workspaceToDictionary(workspace));
     }
 });
 
