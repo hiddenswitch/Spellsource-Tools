@@ -252,9 +252,8 @@
 
 <template name="blocklyOverlay">
     <div id="blocklyDiv">
-        <div style="float:right; width:25%; height:100%;">
-            {{>Template.dynamic template=search}}
-            {{>Template.dynamic template=searchresults}}
+        <div style="float:left; width:25%; height:100%; overflow-y: scroll;">
+            {{> search}}
         </div>
     </div>
 </template>

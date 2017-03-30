@@ -1,9 +1,9 @@
 <template name="search">
     <input type="text" id="search"  autocomplete="off" placeholder="Search for a Block" />
 
-    <ul>
+    <ul style="list-style: none;">
         {{#each blocks}}
-            <li>{{> blockkey}}</li>
+            {{> blockkey}}
         {{/each}}
     </ul>
 </template>

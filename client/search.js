@@ -7,9 +7,9 @@ import {Template} from 'meteor/templating';
 import WorkspaceUtils from './WorkspaceUtils';
 import {CurrentWorkspace} from './cardeditor';
 
-Template.search.onRendered(function() {
+Template.search.onCreated(function () {
     this.blocksDict = new ReactiveDict();
-    this.blocksDict.set('blocksList',[]);
+    this.blocksDict.set('blocksList', []);
 });
 
 Template.search.events({
@@ -17,25 +17,46 @@ Template.search.events({
         let key = event.currentTarget.value;
         let blocks = {};
         let blocksList = [];
-        for (BlocklyBlock in Blockly.Blocks) {
-            if(BlocklyBlock.toLowerCase().indexOf(key.toLowerCase())>-1) {
-                blocks[BlocklyBlock] = Blockly.Blocks[BlocklyBlock];
+        for (let BlocklyBlock in Blockly.Blocks) {
+            if (BlocklyBlock.toLowerCase().indexOf(key.toLowerCase()) > -1) {
+                if (BlocklyBlock[0] == BlocklyBlock[0].toUpperCase())
+                {
+                    blocks[BlocklyBlock] = Blockly.Blocks[BlocklyBlock];
+                }
+
             }
         }
-        Object.keys(blocks).forEach(function(element, index, array){
+        Object.keys(blocks).forEach(function (element, index, array) {
             blocks[element].key = element;
             blocksList.push(blocks[element]);
         });
         template.blocksDict.set('blocksList', blocksList);
         console.log(template.blocksDict.get('blocksList'));
-    }
+    },
 
+    'click .block': function (event, template) {
+        let blockName = event.target.innerText;
+        console.log(blockName);
+        let rootBlock = CurrentWorkspace.newBlock(blockName);
+        rootBlock.initSvg();
+        rootBlock.render();
+        rootBlock.setMovable(true);
+        rootBlock.setDeletable(true);
+    }
 });
 
 Template.search.helpers({
-    blocks: function() {
-        return[{"key":"abc"},{"key":"def"},{"key":"ghi"}];//return Template.instance().blocksDict.get('blocksList');//return {"key":"kek"};
+    blocks: function () {
+        let template = Template.instance();
+        if (template.blocksDict.get('blocksList')) {
+            return template.blocksDict.get('blocksList');
+        }
+        else {
+            return [{"key": "GraveyardCountCondition"}];
+        }
+
     }
+    //return[{"key":"abc"},{"key":"def"},{"key":"ghi"}];
     //blocks: function() {
     //    return Template.instance().blocksDict.get('blocksList');
     //},
