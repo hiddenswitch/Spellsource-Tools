@@ -2,10 +2,25 @@
     <input type="text" id="search"  autocomplete="off" placeholder="Search for a Block" />
 
     <ul style="list-style: none;">
+        {{> categoryHeader label="Card Types"}}
+        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
+        {{> categoryHeader label="Spells"}}
+        {{> filteredBlocks category="SPELLS" blocks=blocks}}
+        {{> categoryHeader label="Card Types"}}
+        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
+        {{> categoryHeader label="Card Types"}}
+        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
+
         {{#each blocks}}
             {{> blockkey}}
         {{/each}}
     </ul>
+</template>
+
+<template name="filteredBlocks">
+    {{#each filteredBlocks}}
+            {{> blockkey}}
+        {{/each}}
 </template>
 
 <template name="blockkey">
