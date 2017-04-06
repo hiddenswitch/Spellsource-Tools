@@ -1,26 +1,146 @@
 <template name="search">
-    <input type="text" id="search"  autocomplete="off" placeholder="Search for a Block" />
-
+    <input type="text" id="search"  autocomplete="off" placeholder="Search for a Block" style="position:fixed;  " />
+    <br/>
+    <br/>
     <ul style="list-style: none;">
-        {{> categoryHeader label="Card Types"}}
-        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
-        {{> categoryHeader label="Spells"}}
-        {{> filteredBlocks category="SPELLS" blocks=blocks}}
-        {{> categoryHeader label="Card Types"}}
-        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
-        {{> categoryHeader label="Card Types"}}
-        {{> filteredBlocks category="CARD_TYPES" blocks=blocks}}
 
-        {{#each blocks}}
-            {{> blockkey}}
-        {{/each}}
+        {{> categoryHeader label="Card Types"}}
+
+        {{#if exists "Card Types"}}
+            {{#if selected "Card Types"}}
+                {{#each filteredBlocks "Card Types"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Spells"}}
+
+        {{#if exists "Spells"}}
+            {{#if selected "Spells"}}
+                {{#each filteredBlocks "Spells"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Attributes"}}
+
+        {{#if exists "Attributes"}}
+            {{#if selected "Attributes"}}
+                {{#each filteredBlocks "Attributes"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Value Providers"}}
+
+        {{#if exists "Value Providers"}}
+            {{#if selected "Value Providers"}}
+                {{#each filteredBlocks "Value Providers"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Auras"}}
+
+        {{#if exists "Auras"}}
+            {{#if selected "Auras"}}
+                {{#each filteredBlocks "Auras"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Filters"}}
+
+        {{#if exists "Filters"}}
+            {{#if selected "Filters"}}
+                {{#each filteredBlocks "Filters"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Conditions"}}
+
+        {{#if exists "Conditions"}}
+            {{#if selected "Conditions"}}
+                {{#each filteredBlocks "Conditions"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Event Triggers"}}
+
+        {{#if exists "Event Triggers"}}
+            {{#if selected "Event Triggers"}}
+                {{#each filteredBlocks "Event Triggers"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
+        {{> categoryHeader label="Others"}}
+
+        {{#if exists "Others"}}
+            {{#if selected "Others"}}
+                {{#each filteredBlocks "Others"}}
+                    {{> blockkey}}
+                {{/each}}
+            {{else}}
+                Contents hidden. Click to open.
+            {{/if}}
+        {{else}}
+            No cards.
+        {{/if}}
+
     </ul>
 </template>
 
+<template name="categoryHeader">
+    <h3 class="categoryHeader">{{label}}</h3>
+</template>
+
 <template name="filteredBlocks">
-    {{#each filteredBlocks}}
-            {{> blockkey}}
-        {{/each}}
+    {{#each filteredBlocks type}}
+        {{> blockkey}}
+    {{/each}}
 </template>
 
 <template name="blockkey">

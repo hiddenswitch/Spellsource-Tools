@@ -5,6 +5,7 @@ import {Tracker} from 'meteor/tracker';
 
 // TODO: Look at https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gj4w2c for inspiration for blocks
 
+export let CurrentWorkspace = null;
 var workspace = null;
 
 Template.cardEditor.onCreated(function () {
@@ -13,7 +14,6 @@ Template.cardEditor.onCreated(function () {
 });
 
 Template.cardEditor.onRendered(function () {
-
     if (CurrentWorkspace !== null) {
         throw new Meteor.Error('There can only be 1 Blockly CurrentWorkspace at a time.');
     }
@@ -22,7 +22,7 @@ Template.cardEditor.onRendered(function () {
     // See the Blaze API to understand how templates work.
     var blocklyArea = document.getElementById('blocklyArea');
     var blocklyDiv = document.getElementById('blocklyDiv');
-    CurrentWorkspace = Blockly.inject(blocklyDiv,
+    workspace = CurrentWorkspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
 
     var onresize = function (e) {
