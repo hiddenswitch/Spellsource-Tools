@@ -1,0 +1,15 @@
+<template name="search">
+    <input type="text" id="search"  autocomplete="off" placeholder="Search for a Block" />
+
+    <ul>
+        {{#each blocks}}
+            <li>{{> blockkey}}</li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="blockkey">
+    <li class="block">
+        <span class="name">{{key}}</span>
+    </li>
+</template>

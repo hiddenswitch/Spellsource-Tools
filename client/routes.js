@@ -19,7 +19,8 @@ FlowRouter.route('/editor', {
         BlazeLayout.render('mainLayout', {
             content: 'cardEditor',
             overlay: 'blocklyOverlay',
-            navbar: 'cardEditorNavbar'
+            navbar: 'cardEditorNavbar',
+            search: 'search'
         })
     }
 });

@@ -14,15 +14,15 @@ Template.cardEditor.onCreated(function () {
 
 Template.cardEditor.onRendered(function () {
 
-    if (workspace !== null) {
-        throw new Meteor.Error('There can only be 1 Blockly workspace at a time.');
+    if (CurrentWorkspace !== null) {
+        throw new Meteor.Error('There can only be 1 Blockly CurrentWorkspace at a time.');
     }
 
     // This gets executed when injection DOM (blocklyDiv element) is ready.
     // See the Blaze API to understand how templates work.
     var blocklyArea = document.getElementById('blocklyArea');
     var blocklyDiv = document.getElementById('blocklyDiv');
-    workspace = Blockly.inject(blocklyDiv,
+    CurrentWorkspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
 
     var onresize = function (e) {
@@ -45,27 +45,25 @@ Template.cardEditor.onRendered(function () {
     // Set up resize handlers
     window.addEventListener('resize', onresize, false);
     onresize();
-    Blockly.svgResize(workspace);
+    Blockly.svgResize(CurrentWorkspace);
 
     // Create a default block
-    var rootBlock = workspace.newBlock('carddesc');
+    var rootBlock = CurrentWorkspace.newBlock('carddesc');
     rootBlock.initSvg();
     rootBlock.render();
     rootBlock.setMovable(true);
     rootBlock.setDeletable(false);
-
     var instance = Template.instance();
     // Configure a change listener to update the code text
     workspace.addChangeListener(() => {
         instance.codeDependency.changed();
     });
-
 });
 
 Template.cardEditor.onDestroyed(function () {
-    if (workspace != null) {
-        workspace.dispose();
-        workspace = null;
+    if (CurrentWorkspace != null) {
+        CurrentWorkspace.dispose();
+        CurrentWorkspace = null;
     }
 });
 
@@ -78,7 +76,7 @@ Template.cardEditor.helpers({
             return;
         }
 
-        var xml = Blockly.Xml.workspaceToDom(workspace);
+        var xml = Blockly.Xml.workspaceToDom(CurrentWorkspace);
         var dictionary = WorkspaceUtils.xmlToDictionary(xml);
 
         return JSON.stringify(WorkspaceUtils.workspaceToDictionary(workspace));
