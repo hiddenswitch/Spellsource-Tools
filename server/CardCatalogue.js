@@ -9,7 +9,7 @@ import winston from "winston";
 
 export class CardCatalogue {
     static loadCardsFromMetastone() {
-        const url = 'https://github.com/hiddenswitch/metastone/archive/master.zip';
+        const url = 'https://github.com/demilich1/metastone/archive/master.zip';
         const migrationsMaster = '/tmp/migrations-master.zip';
         const destinationDirectory = '/tmp';
         const cardsPath = '/tmp/metastone-master/cards/src/main/resources/cards';

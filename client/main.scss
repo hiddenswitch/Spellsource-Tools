@@ -61,3 +61,30 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.blocklyToolboxDiv {
+  display: none !important;
+}
+
+#searchBox {
+  position: fixed;
+  width: 100%;
+}
+
+#searchList {
+  padding: 2em 1em;
+  h3 {
+    margin-top: 1em;
+    font-size: large;
+  }
+  li {
+    span {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+    span:hover {
+      text-decoration: none;
+    }
+  }
+}

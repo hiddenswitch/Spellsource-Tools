@@ -15,8 +15,6 @@ Template.search.onCreated(function () {
 });
 
 Template.search.onRendered(function () {
-    document.getElementsByClassName('blocklyToolboxDiv')[0].style.display = 'none';
-
     let categories = $('category');
     let listToggle = {};
     for (let i = 0; i < categories.length; i++) {
@@ -27,8 +25,6 @@ Template.search.onRendered(function () {
         listToggle[key] = true;
     }
     this.blocksDict.set('showList', listToggle);
-    //console.log(this.blocksDict.get('showList'));
-
 
     let categoriesDict = {};
     let categoriesList = [];
@@ -46,15 +42,13 @@ Template.search.onRendered(function () {
     let blocksList = [];
     for (let BlocklyBlock in Blockly.Blocks) {
         if (BlocklyBlock.toLowerCase().indexOf(key.toLowerCase()) > -1) {
-            if (BlocklyBlock[0] == BlocklyBlock[0].toUpperCase())
-            {
+            if (BlocklyBlock[0] == BlocklyBlock[0].toUpperCase()) {
                 blocks[BlocklyBlock] = Blockly.Blocks[BlocklyBlock];
             }
-
         }
     }
 
-    blocksCategory = this.blocksDict.get('categoriesList');
+    let blocksCategory = this.blocksDict.get('categoriesList');
 
     Object.keys(blocks).forEach(function (element, index, array) {
         blocks[element].key = element;
@@ -62,7 +56,6 @@ Template.search.onRendered(function () {
         blocksList.push(blocks[element]);
     });
     this.blocksDict.set('blocksList', blocksList);
-    //console.log(this.blocksDict.get('blocksList'));
 });
 
 Template.search.events({
@@ -72,15 +65,14 @@ Template.search.events({
         let blocksList = [];
         for (let BlocklyBlock in Blockly.Blocks) {
             if (BlocklyBlock.toLowerCase().indexOf(key.toLowerCase()) > -1) {
-                if (BlocklyBlock[0] == BlocklyBlock[0].toUpperCase())
-                {
+                if (BlocklyBlock[0] == BlocklyBlock[0].toUpperCase()) {
                     blocks[BlocklyBlock] = Blockly.Blocks[BlocklyBlock];
                 }
 
             }
         }
 
-        blocksCategory = template.blocksDict.get('categoriesList');
+        let blocksCategory = template.blocksDict.get('categoriesList');
 
         Object.keys(blocks).forEach(function (element, index, array) {
             blocks[element].key = element;
@@ -108,7 +100,7 @@ Template.search.events({
         }
         let show = template.blocksDict.get('showList');
         show[category] = !show[category];
-        template.blocksDict.set('showList',show);
+        template.blocksDict.set('showList', show);
     }
 });
 
@@ -124,12 +116,12 @@ Template.search.helpers({
 
     },
 
-    filteredBlocks: function(type) {
+    filteredBlocks: function (type) {
         let template = Template.instance();
         if (template.blocksDict.get('blocksList')) {
             let blocksList = [];
             let blocksDict = template.blocksDict.get('blocksList');
-            for (element in blocksDict) {
+            for (let element in blocksDict) {
                 if (blocksDict[element].type == type) {
 
                     blocksList.push(blocksDict[element]);
@@ -142,7 +134,7 @@ Template.search.helpers({
         }
     },
 
-    selected: function(type) {
+    selected: function (type) {
         let template = Template.instance();
         if (type == "Others") {
             type = "Other";
@@ -150,21 +142,17 @@ Template.search.helpers({
         return template.blocksDict.get('showList')[type];
     },
 
-    exists: function(type) {
+    exists: function (type) {
         let template = Template.instance();
         let blocksDict = template.blocksDict.get('blocksList');
         if (type == "Others") {
             type = "Other";
         }
-        for (element in blocksDict) {
+        for (let element in blocksDict) {
             if (blocksDict[element].type == type) {
                 return true;
             }
         }
         return false;
     }
-    //return[{"key":"abc"},{"key":"def"},{"key":"ghi"}];
-    //blocks: function() {
-    //    return Template.instance().blocksDict.get('blocksList');
-    //},
 });

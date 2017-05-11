@@ -6,7 +6,6 @@ import {Tracker} from 'meteor/tracker';
 // TODO: Look at https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gj4w2c for inspiration for blocks
 
 export let CurrentWorkspace = null;
-var workspace = null;
 
 Template.cardEditor.onCreated(function () {
     let instance = Template.instance();
@@ -22,7 +21,7 @@ Template.cardEditor.onRendered(function () {
     // See the Blaze API to understand how templates work.
     var blocklyArea = document.getElementById('blocklyArea');
     var blocklyDiv = document.getElementById('blocklyDiv');
-    workspace = CurrentWorkspace = Blockly.inject(blocklyDiv,
+    CurrentWorkspace = Blockly.inject(blocklyDiv,
         {toolbox: document.getElementById('toolbox')});
 
     var onresize = function (e) {
@@ -55,7 +54,7 @@ Template.cardEditor.onRendered(function () {
     rootBlock.setDeletable(false);
     var instance = Template.instance();
     // Configure a change listener to update the code text
-    workspace.addChangeListener(() => {
+    CurrentWorkspace.addChangeListener(() => {
         instance.codeDependency.changed();
     });
 });
@@ -72,14 +71,12 @@ Template.cardEditor.helpers({
         let instance = Template.instance();
         instance.codeDependency.depend();
 
-        if (workspace == null) {
+        if (CurrentWorkspace == null) {
             return;
         }
 
         var xml = Blockly.Xml.workspaceToDom(CurrentWorkspace);
-        var dictionary = WorkspaceUtils.xmlToDictionary(xml);
-
-        return JSON.stringify(WorkspaceUtils.workspaceToDictionary(workspace));
+        return JSON.stringify(WorkspaceUtils.workspaceToDictionary(CurrentWorkspace), null, '  ');
     }
 });
 
