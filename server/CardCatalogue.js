@@ -9,30 +9,36 @@ import winston from "winston";
 
 export class CardCatalogue {
     static loadCardsFromMetastone() {
-        const url = 'https://github.com/demilich1/metastone/archive/master.zip';
-        const migrationsMaster = '/tmp/migrations-master.zip';
-        const destinationDirectory = '/tmp';
-        const cardsPath = '/tmp/metastone-master/cards/src/main/resources/cards';
-        const download = new Download(url, migrationsMaster);
-        const waitUntilDownloaded = Meteor.wrapAsync((callback) => {
-            download.on('end', Meteor.bindEnvironment((code) => {
-                callback(null, code === 0);
-            }));
-        });
+        let cardsPath = null;
+        if (!!process.env.CARDS_PATH) {
+            cardsPath = process.env.CARDS_PATH;
+        } else {
+            const url = 'https://github.com/demilich1/metastone/archive/master.zip';
+            const migrationsMaster = '/tmp/migrations-master.zip';
+            const destinationDirectory = '/tmp';
+            cardsPath = '/tmp/metastone-master/cards/src/main/resources/cards';
+            const download = new Download(url, migrationsMaster);
+            const waitUntilDownloaded = Meteor.wrapAsync((callback) => {
+                download.on('end', Meteor.bindEnvironment((code) => {
+                    callback(null, code === 0);
+                }));
+            });
 
-        download.start();
+            download.start();
 
-        const isDownloaded = waitUntilDownloaded();
+            const isDownloaded = waitUntilDownloaded();
 
-        if (!isDownloaded) {
-            winston.error('Could not download the metastone zip file. Do you have CURL installed?');
-            return;
+            if (!isDownloaded) {
+                winston.error('Could not download the metastone zip file. Do you have CURL installed?');
+                return;
+            }
+
+            const waitUntilExtracted = Meteor.wrapAsync(extract);
+
+            waitUntilExtracted(migrationsMaster, {dir: destinationDirectory});
+            // Walk the directory tree for JSON files and insert everything
         }
 
-        const waitUntilExtracted = Meteor.wrapAsync(extract);
-
-        waitUntilExtracted(migrationsMaster, {dir: destinationDirectory});
-        // Walk the directory tree for JSON files and insert everything
 
         const waitUntilWalked = Meteor.wrapAsync((callback) => {
             const walker = walk.walk(cardsPath);
